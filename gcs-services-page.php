@@ -651,13 +651,11 @@ function gcs_services_page_shortcode() {
 
         /* Mobile Menu Button */
         .gcs-services-mobile-toggle {
-            display: block !important;
-            width: 2rem !important;
-            height: 2rem !important;
+            display: flex !important;
             background: none !important;
             border: none !important;
             cursor: pointer !important;
-            position: relative !important;
+            padding: 0.25rem !important;
         }
 
         @media (min-width: 768px) {
@@ -673,16 +671,17 @@ function gcs_services_page_shortcode() {
             color: #ffffff !important;
             stroke: currentColor !important;
             fill: none !important;
-            position: absolute !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            transition: color 0.15s !important;
+            transition-property: color !important;
+            transition-duration: 300ms !important;
         }
 
         .gcs-services-header.scrolled .gcs-services-menu-icon,
         .gcs-services-header.scrolled .gcs-services-close-icon {
             color: #003D7A !important;
+        }
+
+        .gcs-services-menu-icon {
+            display: block !important;
         }
 
         .gcs-services-close-icon {
@@ -700,14 +699,18 @@ function gcs_services_page_shortcode() {
         /* Mobile Menu */
         .gcs-services-mobile-menu {
             display: none !important;
-            flex-direction: column !important;
-            gap: 1rem !important;
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
         }
 
         .gcs-services-mobile-menu.open {
             display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+            margin-top: 1rem !important;
+            padding: 1rem !important;
+            padding-bottom: 1rem !important;
+            background-color: #ffffff !important;
+            border-radius: 0.5rem !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
         }
 
         @media (min-width: 768px) {
@@ -847,6 +850,9 @@ function gcs_services_page_shortcode() {
 
         /* Service Card */
         .gcs-services-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
             background-color: #ffffff !important;
             border: 2px solid #f3f4f6 !important;
             border-radius: 0.5rem !important;
@@ -896,6 +902,9 @@ function gcs_services_page_shortcode() {
         }
 
         .gcs-services-card-content {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 !important;
             padding: 0 1.5rem 1.5rem 1.5rem !important;
         }
 
@@ -911,6 +920,7 @@ function gcs_services_page_shortcode() {
             flex-direction: column !important;
             gap: 0.5rem !important;
             margin-bottom: 1.5rem !important;
+            flex: 1 !important;
         }
 
         .gcs-services-feature {

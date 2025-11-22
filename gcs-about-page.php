@@ -654,13 +654,11 @@ function gcs_about_page_shortcode() {
 
         /* Mobile Menu Button */
         .gcs-about-mobile-toggle {
-            display: block !important;
-            width: 2rem !important;
-            height: 2rem !important;
+            display: flex !important;
             background: none !important;
             border: none !important;
             cursor: pointer !important;
-            position: relative !important;
+            padding: 0.25rem !important;
         }
 
         @media (min-width: 768px) {
@@ -676,16 +674,17 @@ function gcs_about_page_shortcode() {
             color: #ffffff !important;
             stroke: currentColor !important;
             fill: none !important;
-            position: absolute !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            transition: color 0.15s !important;
+            transition-property: color !important;
+            transition-duration: 300ms !important;
         }
 
         .gcs-about-header.scrolled .gcs-about-menu-icon,
         .gcs-about-header.scrolled .gcs-about-close-icon {
             color: #003D7A !important;
+        }
+
+        .gcs-about-menu-icon {
+            display: block !important;
         }
 
         .gcs-about-close-icon {
@@ -703,14 +702,18 @@ function gcs_about_page_shortcode() {
         /* Mobile Menu */
         .gcs-about-mobile-menu {
             display: none !important;
-            flex-direction: column !important;
-            gap: 1rem !important;
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
         }
 
         .gcs-about-mobile-menu.open {
             display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+            margin-top: 1rem !important;
+            padding: 1rem !important;
+            padding-bottom: 1rem !important;
+            background-color: #ffffff !important;
+            border-radius: 0.5rem !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
         }
 
         @media (min-width: 768px) {
