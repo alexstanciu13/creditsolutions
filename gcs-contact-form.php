@@ -33,20 +33,36 @@ function gcs_contact_form_shortcode() {
             } else {
                 // Prepare email
                 $to = 'contact@creditsolutions.ro';
-                $subject = 'Cerere Credit Nouă - ' . $credit_type;
+                $domain = parse_url(home_url(), PHP_URL_HOST);
+                $from_email = 'wordpress@' . $domain;
 
-                $email_body = "Cerere Credit Nouă\n\n";
-                $email_body .= "Nume: {$name}\n";
+                // Subject line with clear identifier
+                $subject = '[Contact Form] ' . $credit_type . ' - ' . $name;
+
+                // Email body with clear formatting
+                $email_body = "Formular de contact - Global Credit Solutions\n";
+                $email_body .= "==========================================\n\n";
+                $email_body .= "Nume complet: {$name}\n";
                 $email_body .= "CNP/CUI: {$cnp}\n";
                 $email_body .= "Email: {$email}\n";
-                $email_body .= "Tip Credit: {$credit_type}\n\n";
-                $email_body .= "Mesaj:\n{$message}\n\n";
-                $email_body .= "---\n";
-                $email_body .= "Trimis de pe " . home_url();
+                $email_body .= "Tip Credit: {$credit_type}\n";
+                $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
+                $email_body .= "Mesaj:\n";
+                $email_body .= "==========================================\n";
+                $email_body .= $message . "\n";
+                $email_body .= "==========================================\n\n";
+                $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
 
+                // Improved headers to avoid spam filters
                 $headers = array(
                     'Content-Type: text/plain; charset=UTF-8',
-                    'Reply-To: ' . $email
+                    'From: Global Credit Solutions <' . $from_email . '>',
+                    'Return-Path: ' . $from_email,
+                    'Reply-To: ' . $name . ' <' . $email . '>',
+                    'X-Mailer: PHP/' . phpversion(),
+                    'X-Priority: 3',
+                    'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
+                    'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
                 );
 
                 // Send email
@@ -202,7 +218,7 @@ function gcs_contact_form_shortcode() {
                             <!-- Privacy notice: text-sm text-gray-600 text-center -->
                             <p class="gcs-cf-privacy">
                                 Prin trimiterea formularului, ești de acord cu
-                                <a href="<?php echo home_url('/politica-confidentialitate'); ?>" class="gcs-cf-privacy-link">Politica de Confidențialitate</a>
+                                <a href="/gdpr" class="gcs-cf-privacy-link">Politica de Confidențialitate</a>
                             </p>
                         </form>
                     </div>
