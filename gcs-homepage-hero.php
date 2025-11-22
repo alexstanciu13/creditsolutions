@@ -766,7 +766,7 @@ function gcs_homepage_hero_shortcode() {
         /* Slider */
         .gcs-hp-slider {
             width: 100% !important;
-            height: 1rem !important;
+            height: 2rem !important;
             background: transparent !important;
             outline: none !important;
             -webkit-appearance: none !important;
@@ -776,7 +776,7 @@ function gcs_homepage_hero_shortcode() {
 
         .gcs-hp-slider::-webkit-slider-track {
             width: 100% !important;
-            height: 1rem !important;
+            height: 0.75rem !important;
             background: #e5e7eb !important;
             border-radius: 0.5rem !important;
         }
@@ -784,29 +784,43 @@ function gcs_homepage_hero_shortcode() {
         .gcs-hp-slider::-webkit-slider-thumb {
             -webkit-appearance: none !important;
             appearance: none !important;
-            width: 1rem !important;
-            height: 1rem !important;
+            width: 2rem !important;
+            height: 2rem !important;
             background: #0066CC !important;
-            border: 2px solid #ffffff !important;
+            border: 3px solid #ffffff !important;
             border-radius: 50% !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15), 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
             cursor: pointer !important;
+            margin-top: -0.625rem !important;
+        }
+
+        .gcs-hp-slider::-webkit-slider-runnable-track {
+            width: 100% !important;
+            height: 0.75rem !important;
+            background: linear-gradient(to right, #0066CC 0%, #0066CC var(--value, 50%), #e5e7eb var(--value, 50%), #e5e7eb 100%) !important;
+            border-radius: 0.5rem !important;
         }
 
         .gcs-hp-slider::-moz-range-track {
             width: 100% !important;
-            height: 1rem !important;
+            height: 0.75rem !important;
             background: #e5e7eb !important;
             border-radius: 0.5rem !important;
         }
 
-        .gcs-hp-slider::-moz-range-thumb {
-            width: 1rem !important;
-            height: 1rem !important;
+        .gcs-hp-slider::-moz-range-progress {
+            height: 0.75rem !important;
             background: #0066CC !important;
-            border: 2px solid #ffffff !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .gcs-hp-slider::-moz-range-thumb {
+            width: 2rem !important;
+            height: 2rem !important;
+            background: #0066CC !important;
+            border: 3px solid #ffffff !important;
             border-radius: 50% !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15), 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
             cursor: pointer !important;
         }
 
@@ -958,6 +972,12 @@ function gcs_homepage_hero_shortcode() {
 
                 monthly.textContent = pay.toLocaleString('ro-RO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' RON';
                 dae.textContent = d.replace('.', ',') + '%';
+
+                // Update slider progress bars
+                const amountPercent = ((a - parseInt(amount.min)) / (parseInt(amount.max) - parseInt(amount.min))) * 100;
+                const periodPercent = ((p - parseInt(period.min)) / (parseInt(period.max) - parseInt(period.min))) * 100;
+                amount.style.setProperty('--value', amountPercent + '%');
+                period.style.setProperty('--value', periodPercent + '%');
             }
 
             if (creditType) creditType.addEventListener('change', update);
