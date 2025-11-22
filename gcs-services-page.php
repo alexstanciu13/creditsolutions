@@ -4,7 +4,8 @@
  *
  * Shortcode: [gcs_services_page]
  *
- * EXACT FIGMA DESIGN - Complete Services page with header
+ * EXACT FIGMA DESIGN - Rebuilt from scratch
+ * - Header copied exactly from homepage
  * - All Tailwind classes converted precisely
  * - Complete theme isolation with !important on EVERY property
  */
@@ -16,9 +17,9 @@ function gcs_services_page_shortcode() {
     <div class="gcs-services-wrapper">
 
         <!-- ==================== HEADER ==================== -->
-        <!-- Fixed header with scroll effect - same as homepage -->
+        <!-- Fixed Header -->
         <header class="gcs-services-header">
-            <div class="gcs-services-header-container">
+            <div class="gcs-services-container">
                 <div class="gcs-services-header-content">
                     <!-- Logo -->
                     <a href="<?php echo home_url(); ?>" class="gcs-services-logo-btn">
@@ -35,8 +36,8 @@ function gcs_services_page_shortcode() {
                     <!-- Desktop Navigation -->
                     <nav class="gcs-services-nav-desktop">
                         <a href="<?php echo home_url(); ?>" class="gcs-services-nav-link">Acasă</a>
-                        <a href="<?php echo home_url('/despre'); ?>" class="gcs-services-nav-link">Despre Noi</a>
-                        <a href="<?php echo home_url('/servicii'); ?>" class="gcs-services-nav-link active">Servicii</a>
+                        <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-services-nav-link">Despre Noi</a>
+                        <a href="<?php echo home_url('/servicii'); ?>" class="gcs-services-nav-link">Servicii</a>
                         <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-nav-link">Contact</a>
                     </nav>
 
@@ -62,7 +63,7 @@ function gcs_services_page_shortcode() {
                 <!-- Mobile Menu -->
                 <nav class="gcs-services-mobile-menu">
                     <a href="<?php echo home_url(); ?>" class="gcs-services-mobile-link">Acasă</a>
-                    <a href="<?php echo home_url('/despre'); ?>" class="gcs-services-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-services-mobile-link">Despre Noi</a>
                     <a href="<?php echo home_url('/servicii'); ?>" class="gcs-services-mobile-link">Servicii</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-mobile-link">Contact</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-btn-primary gcs-services-btn-full">Aplică Acum</a>
@@ -88,6 +89,7 @@ function gcs_services_page_shortcode() {
                 </div>
             </div>
         </section>
+
 
         <!-- ==================== SERVICES GRID ==================== -->
         <!-- py-16 bg-white -->
@@ -259,6 +261,7 @@ function gcs_services_page_shortcode() {
             </div>
         </section>
 
+
         <!-- ==================== PROCESS SECTION ==================== -->
         <!-- py-16 bg-[#F5F7FA] -->
         <section class="gcs-services-process-section">
@@ -304,6 +307,7 @@ function gcs_services_page_shortcode() {
             </div>
         </section>
 
+
         <!-- ==================== WHY CHOOSE US ==================== -->
         <!-- py-16 bg-white -->
         <section class="gcs-services-why-section">
@@ -341,6 +345,7 @@ function gcs_services_page_shortcode() {
                 </div>
             </div>
         </section>
+
 
     </div>
 
@@ -426,6 +431,7 @@ function gcs_services_page_shortcode() {
             -webkit-font-smoothing: antialiased !important;
             -moz-osx-font-smoothing: grayscale !important;
         }
+
 
         /* ==================== HEADER ==================== */
         /* fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 */
@@ -684,6 +690,7 @@ function gcs_services_page_shortcode() {
         .gcs-services-mobile-link:hover {
             color: #0066CC !important;
         }
+
 
         /* ==================== HERO SECTION ==================== */
         .gcs-services-hero {
@@ -1134,6 +1141,7 @@ function gcs_services_page_shortcode() {
             stroke: currentColor !important;
             fill: none !important;
         }
+
     </style>
 
     <script>

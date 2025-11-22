@@ -16,9 +16,9 @@ function gcs_about_page_shortcode() {
     <div class="gcs-about-wrapper">
 
         <!-- ==================== HEADER ==================== -->
-        <!-- Fixed header with scroll effect - same as homepage -->
+        <!-- Fixed Header -->
         <header class="gcs-about-header">
-            <div class="gcs-about-header-container">
+            <div class="gcs-about-container">
                 <div class="gcs-about-header-content">
                     <!-- Logo -->
                     <a href="<?php echo home_url(); ?>" class="gcs-about-logo-btn">
@@ -35,7 +35,7 @@ function gcs_about_page_shortcode() {
                     <!-- Desktop Navigation -->
                     <nav class="gcs-about-nav-desktop">
                         <a href="<?php echo home_url(); ?>" class="gcs-about-nav-link">Acasă</a>
-                        <a href="<?php echo home_url('/despre'); ?>" class="gcs-about-nav-link active">Despre Noi</a>
+                        <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-about-nav-link">Despre Noi</a>
                         <a href="<?php echo home_url('/servicii'); ?>" class="gcs-about-nav-link">Servicii</a>
                         <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-nav-link">Contact</a>
                     </nav>
@@ -62,7 +62,7 @@ function gcs_about_page_shortcode() {
                 <!-- Mobile Menu -->
                 <nav class="gcs-about-mobile-menu">
                     <a href="<?php echo home_url(); ?>" class="gcs-about-mobile-link">Acasă</a>
-                    <a href="<?php echo home_url('/despre'); ?>" class="gcs-about-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-about-mobile-link">Despre Noi</a>
                     <a href="<?php echo home_url('/servicii'); ?>" class="gcs-about-mobile-link">Servicii</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-mobile-link">Contact</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-btn-primary gcs-about-btn-full">Aplică Acum</a>
@@ -360,76 +360,12 @@ function gcs_about_page_shortcode() {
         .gcs-about-wrapper *::before,
         .gcs-about-wrapper *::after {
             box-sizing: border-box !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0 !important;
-            font-size: 100% !important;
-            font: inherit !important;
-            vertical-align: baseline !important;
-        }
-
-        /* SVG reset */
-        .gcs-about-wrapper svg {
-            display: inline-block !important;
-            vertical-align: middle !important;
-            overflow: visible !important;
-        }
-
-        /* Remove all link styles */
-        .gcs-about-wrapper a {
-            background-color: transparent !important;
-            background-image: none !important;
-            background: transparent !important;
-            text-decoration: none !important;
-            color: inherit !important;
-            border: none !important;
-            outline: none !important;
-        }
-
-        .gcs-about-wrapper a:hover,
-        .gcs-about-wrapper a:active,
-        .gcs-about-wrapper a:focus,
-        .gcs-about-wrapper a:visited {
-            background-image: none !important;
-            text-decoration: none !important;
-            outline: none !important;
-            border: none !important;
-        }
-
-        /* Remove list styles */
-        .gcs-about-wrapper ul,
-        .gcs-about-wrapper ol {
-            list-style: none !important;
-        }
-
-        /* Remove button/input defaults */
-        .gcs-about-wrapper button,
-        .gcs-about-wrapper input,
-        .gcs-about-wrapper select,
-        .gcs-about-wrapper textarea {
-            font-family: inherit !important;
-            font-size: 100% !important;
-            line-height: 1.15 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0 !important;
-            background: none !important;
-        }
-
-        /* Remove button defaults */
-        .gcs-about-wrapper button {
-            overflow: visible !important;
-            text-transform: none !important;
-            -webkit-appearance: button !important;
         }
 
         /* Global font */
         .gcs-about-wrapper,
         .gcs-about-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
-            text-rendering: optimizeLegibility !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
         }
 
         /* ==================== HEADER ==================== */
@@ -692,15 +628,16 @@ function gcs_about_page_shortcode() {
 
         /* ==================== HERO SECTION ==================== */
         .gcs-about-hero {
-            background: linear-gradient(to bottom right, #003D7A, #001f3f) !important;
-            padding-top: 8rem !important; /* pt-32 */
-            padding-bottom: 4rem !important; /* pb-16 */
+            position: relative !important;
+            background-image: linear-gradient(to bottom right, #003D7A, #001f3f) !important;
+            padding-top: 8rem !important;
+            padding-bottom: 4rem !important;
         }
 
         @media (min-width: 768px) {
             .gcs-about-hero {
-                padding-top: 10rem !important; /* md:pt-40 */
-                padding-bottom: 6rem !important; /* md:pb-24 */
+                padding-top: 10rem !important;
+                padding-bottom: 6rem !important;
             }
         }
 
@@ -713,23 +650,24 @@ function gcs_about_page_shortcode() {
         }
 
         .gcs-about-hero-title {
+            color: #ffffff !important;
             margin-bottom: 1.5rem !important;
-            font-size: 1.875rem !important; /* text-3xl */
+            font-size: 1.875rem !important;
             line-height: 2.25rem !important;
             font-weight: 700 !important;
-            color: #ffffff !important;
+            margin-top: 0 !important;
         }
 
         @media (min-width: 768px) {
             .gcs-about-hero-title {
-                font-size: 2.25rem !important; /* md:text-4xl */
+                font-size: 2.25rem !important;
                 line-height: 2.5rem !important;
             }
         }
 
         @media (min-width: 1024px) {
             .gcs-about-hero-title {
-                font-size: 3rem !important; /* lg:text-5xl */
+                font-size: 3rem !important;
                 line-height: 1 !important;
             }
         }
@@ -739,16 +677,7 @@ function gcs_about_page_shortcode() {
             line-height: 1.75rem !important;
             color: #e5e7eb !important;
             margin-bottom: 2rem !important;
-        }
-
-        /* ==================== CONTAINER ==================== */
-        .gcs-about-container {
-            width: 100% !important;
-            max-width: 80rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
+            margin-top: 0 !important;
         }
 
         /* ==================== STATS SECTION ==================== */
@@ -1110,7 +1039,6 @@ function gcs_about_page_shortcode() {
             }
         }
 
-        /* Primary Button */
         .gcs-about-cta-button-primary,
         a.gcs-about-cta-button-primary,
         .gcs-about-wrapper .gcs-about-cta-button-primary,
@@ -1119,24 +1047,21 @@ function gcs_about_page_shortcode() {
             align-items: center !important;
             justify-content: center !important;
             height: 2.5rem !important;
-            min-height: 2.5rem !important;
             padding: 0.5rem 1.5rem !important;
-            font-size: 0.875rem !important;
-            font-weight: 500 !important;
-            line-height: 1.25rem !important;
             background-color: #ffffff !important;
             background-image: none !important;
             background: #ffffff !important;
             color: #003D7A !important;
             border: none !important;
             border-radius: 0.5rem !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
             cursor: pointer !important;
+            text-decoration: none !important;
             transition: background-color 0.15s !important;
             -webkit-appearance: none !important;
             -moz-appearance: none !important;
             appearance: none !important;
-            outline: none !important;
-            text-decoration: none !important;
         }
 
         .gcs-about-cta-button-primary:hover,
@@ -1146,7 +1071,6 @@ function gcs_about_page_shortcode() {
             background: #f3f4f6 !important;
         }
 
-        /* Secondary Button */
         .gcs-about-cta-button-secondary,
         a.gcs-about-cta-button-secondary,
         .gcs-about-wrapper .gcs-about-cta-button-secondary,
@@ -1155,24 +1079,21 @@ function gcs_about_page_shortcode() {
             align-items: center !important;
             justify-content: center !important;
             height: 2.5rem !important;
-            min-height: 2.5rem !important;
             padding: 0.5rem 1.5rem !important;
-            font-size: 0.875rem !important;
-            font-weight: 500 !important;
-            line-height: 1.25rem !important;
             background-color: transparent !important;
             background-image: none !important;
             background: transparent !important;
             color: #ffffff !important;
             border: 2px solid #ffffff !important;
             border-radius: 0.5rem !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
             cursor: pointer !important;
+            text-decoration: none !important;
             transition: all 0.15s !important;
             -webkit-appearance: none !important;
             -moz-appearance: none !important;
             appearance: none !important;
-            outline: none !important;
-            text-decoration: none !important;
         }
 
         .gcs-about-cta-button-secondary:hover,
@@ -1186,8 +1107,8 @@ function gcs_about_page_shortcode() {
 
     <script>
         (function() {
-            if (window.gcsAboutInit) return;
-            window.gcsAboutInit = true;
+            if (window.gcsHpInit) return;
+            window.gcsHpInit = true;
 
             const header = document.querySelector('.gcs-about-header');
             const mobileToggle = document.querySelector('.gcs-about-mobile-toggle');
