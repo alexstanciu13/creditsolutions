@@ -305,20 +305,14 @@ function gcs_homepage_hero_shortcode() {
             padding-bottom: 0.75rem !important;
         }
 
-        /* container - Full width edge-to-edge layout with minimal padding */
+        /* container mx-auto px-4 */
         .gcs-hp-container {
             width: 100% !important;
+            max-width: 80rem !important; /* Tailwind container max-width */
             margin-left: auto !important;
             margin-right: auto !important;
-            padding-left: 0.75rem !important; /* Minimal padding for mobile */
-            padding-right: 0.75rem !important;
-        }
-
-        @media (min-width: 768px) {
-            .gcs-hp-container {
-                padding-left: 1.5rem !important;
-                padding-right: 1.5rem !important;
-            }
+            padding-left: 1rem !important; /* px-4 */
+            padding-right: 1rem !important;
         }
 
         /* flex items-center justify-between */
