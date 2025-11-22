@@ -367,7 +367,6 @@ function gcs_services_page_shortcode() {
         .gcs-services-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
         }
-
         /* ==================== HEADER ==================== */
         /* fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 */
         .gcs-services-header {
@@ -625,7 +624,6 @@ function gcs_services_page_shortcode() {
         .gcs-services-mobile-link:hover {
             color: #0066CC !important;
         }
-
 
         /* ==================== HERO SECTION ==================== */
         .gcs-services-hero {
