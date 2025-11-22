@@ -26,9 +26,9 @@ function gcs_contact_form_shortcode() {
             $message = sanitize_textarea_field($_POST['gcs_message']);
 
             // Validate required fields
-            if (empty($name) || empty($cnp) || empty($email) || empty($credit_type)) {
+            if (empty($name) || empty($cnp) || empty($credit_type)) {
                 $error_message = 'Vă rugăm completați toate câmpurile obligatorii.';
-            } elseif (!is_email($email)) {
+            } elseif (!empty($email) && !is_email($email)) {
                 $error_message = 'Vă rugăm introduceți o adresă de email validă.';
             } else {
                 // Prepare email
@@ -44,7 +44,7 @@ function gcs_contact_form_shortcode() {
                 $email_body .= "==========================================\n\n";
                 $email_body .= "Nume complet: {$name}\n";
                 $email_body .= "CNP/CUI: {$cnp}\n";
-                $email_body .= "Email: {$email}\n";
+                $email_body .= "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat') . "\n";
                 $email_body .= "Tip Credit: {$credit_type}\n";
                 $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
                 $email_body .= "Mesaj:\n";
@@ -58,12 +58,16 @@ function gcs_contact_form_shortcode() {
                     'Content-Type: text/plain; charset=UTF-8',
                     'From: Global Credit Solutions <' . $from_email . '>',
                     'Return-Path: ' . $from_email,
-                    'Reply-To: ' . $name . ' <' . $email . '>',
                     'X-Mailer: PHP/' . phpversion(),
                     'X-Priority: 3',
                     'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
                     'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
                 );
+
+                // Add Reply-To with customer email if provided
+                if (!empty($email)) {
+                    $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
+                }
 
                 // Send email
                 if (wp_mail($to, $subject, $email_body, $headers)) {
@@ -162,13 +166,12 @@ function gcs_contact_form_shortcode() {
 
                             <!-- Email field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-email" class="gcs-cf-label">Email *</label>
+                                <label for="gcs-email" class="gcs-cf-label">Email</label>
                                 <input
                                     type="email"
                                     id="gcs-email"
                                     name="gcs_email"
                                     placeholder="ion@example.com"
-                                    required
                                     class="gcs-cf-input"
                                     value="<?php echo isset($_POST['gcs_email']) ? esc_attr($_POST['gcs_email']) : ''; ?>"
                                 />
