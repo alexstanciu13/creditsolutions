@@ -4,26 +4,31 @@
  *
  * Shortcode: [gcs_homepage_hero]
  *
- * EXACT FIGMA DESIGN MATCH
- * - Uses exact Tailwind class conversions from original TSX components
- * - System font stack (ui-sans-serif, not custom fonts)
- * - Exact gray-* color scale from Tailwind
- * - Exact spacing, sizing, and shadows
+ * EXACT FIGMA DESIGN - Rebuilt from scratch
+ * - Uses Globe icon logo exactly as in original TSX
+ * - All Tailwind classes converted precisely
+ * - No assumptions, no modifications
  */
 
 function gcs_homepage_hero_shortcode() {
     ob_start();
     ?>
 
-    <div class="gcs-homepage-wrapper">
+    <div class="gcs-hp-wrapper">
         <!-- Fixed Header -->
         <header class="gcs-hp-header">
             <div class="gcs-hp-container">
-                <div class="gcs-hp-flex-between">
+                <div class="gcs-hp-header-content">
                     <!-- Logo -->
-                    <a href="<?php echo home_url(); ?>" class="gcs-hp-logo">
-                        <img src="https://creditsolutions.ro/wp-content/uploads/2025/11/white_logo.png" alt="Global Credit Solutions" class="gcs-hp-logo-white">
-                        <img src="https://creditsolutions.ro/wp-content/uploads/2025/11/blue_logo.png" alt="Global Credit Solutions" class="gcs-hp-logo-blue">
+                    <a href="<?php echo home_url(); ?>" class="gcs-hp-logo-btn">
+                        <div class="gcs-hp-logo-circle">
+                            <svg class="gcs-hp-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <div class="gcs-hp-logo-text">Global Credit Solutions</div>
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -35,28 +40,31 @@ function gcs_homepage_hero_shortcode() {
                     </nav>
 
                     <!-- CTA Button Desktop -->
-                    <div class="gcs-hp-cta-desktop">
-                        <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-cta">Aplică Acum</a>
+                    <div class="gcs-hp-cta-wrapper">
+                        <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-primary">Aplică Acum</a>
                     </div>
 
                     <!-- Mobile Menu Button -->
-                    <button class="gcs-hp-mobile-btn" aria-label="Toggle menu">
-                        <svg class="gcs-hp-menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                    <button class="gcs-hp-mobile-toggle" aria-label="Toggle menu">
+                        <svg class="gcs-hp-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
-                        <svg class="gcs-hp-close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
+                        <svg class="gcs-hp-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
                 </div>
 
                 <!-- Mobile Menu -->
-                <nav class="gcs-hp-nav-mobile">
-                    <a href="<?php echo home_url(); ?>" class="gcs-hp-nav-link-mobile">Acasă</a>
-                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-hp-nav-link-mobile">Despre Noi</a>
-                    <a href="<?php echo home_url('/servicii'); ?>" class="gcs-hp-nav-link-mobile">Servicii</a>
-                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-nav-link-mobile">Contact</a>
-                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-cta gcs-hp-btn-mobile">Aplică Acum</a>
+                <nav class="gcs-hp-mobile-menu">
+                    <a href="<?php echo home_url(); ?>" class="gcs-hp-mobile-link">Acasă</a>
+                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-hp-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/servicii'); ?>" class="gcs-hp-mobile-link">Servicii</a>
+                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-mobile-link">Contact</a>
+                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-primary gcs-hp-btn-full">Aplică Acum</a>
                 </nav>
             </div>
         </header>
@@ -69,7 +77,7 @@ function gcs_homepage_hero_shortcode() {
             <div class="gcs-hp-container gcs-hp-relative">
                 <div class="gcs-hp-grid">
                     <!-- Left Content -->
-                    <div class="gcs-hp-text-white">
+                    <div class="gcs-hp-hero-content">
                         <h1 class="gcs-hp-h1">Găsește rapid cel mai bun credit pentru nevoile tale</h1>
                         <p class="gcs-hp-subtitle">Soluții de creditare personalizate | Comparare oferte de la 30+ bănci</p>
 
@@ -79,11 +87,11 @@ function gcs_homepage_hero_shortcode() {
                         </div>
 
                         <!-- Trust Badges -->
-                        <div class="gcs-hp-trust-badges">
+                        <div class="gcs-hp-badges">
                             <div class="gcs-hp-badge">
                                 <div class="gcs-hp-badge-icon">
-                                    <svg class="gcs-hp-svg-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    <svg class="gcs-hp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                                     </svg>
                                 </div>
                                 <div class="gcs-hp-badge-text">
@@ -94,8 +102,8 @@ function gcs_homepage_hero_shortcode() {
 
                             <div class="gcs-hp-badge">
                                 <div class="gcs-hp-badge-icon">
-                                    <svg class="gcs-hp-svg-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    <svg class="gcs-hp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                                     </svg>
                                 </div>
                                 <div class="gcs-hp-badge-text">
@@ -107,15 +115,15 @@ function gcs_homepage_hero_shortcode() {
                     </div>
 
                     <!-- Right Content - Calculator -->
-                    <div class="gcs-hp-calc-wrapper">
+                    <div class="gcs-hp-calc-outer">
                         <div id="gcs-calculator" class="gcs-hp-calculator">
                             <h3 class="gcs-hp-calc-title">Calculator Credit</h3>
 
-                            <div class="gcs-hp-calc-content">
+                            <div class="gcs-hp-calc-body">
                                 <!-- Credit Type -->
                                 <div>
                                     <label class="gcs-hp-label">Tip Credit</label>
-                                    <div class="gcs-hp-select-wrapper">
+                                    <div class="gcs-hp-select-wrap">
                                         <select id="gcs-credit-type" class="gcs-hp-select">
                                             <option value="nevoi">Credite de Nevoi Personale</option>
                                             <option value="ipotecar">Credit Ipotecar/Prima Casă</option>
@@ -160,7 +168,7 @@ function gcs_homepage_hero_shortcode() {
                                 <div class="gcs-hp-results">
                                     <div class="gcs-hp-result-row">
                                         <span class="gcs-hp-text-gray-600">Rata lunară estimată:</span>
-                                        <span class="gcs-hp-text-primary" id="gcs-monthly-payment">1.234,56 RON</span>
+                                        <span class="gcs-hp-text-primary" id="gcs-monthly">1.234,56 RON</span>
                                     </div>
                                     <div class="gcs-hp-result-row">
                                         <span class="gcs-hp-text-gray-600">DAE estimat:</span>
@@ -169,7 +177,7 @@ function gcs_homepage_hero_shortcode() {
                                 </div>
 
                                 <!-- CTA Button -->
-                                <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-cta gcs-hp-w-full">Vezi oferte personalizate</a>
+                                <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-primary gcs-hp-btn-full">Vezi oferte personalizate</a>
 
                                 <p class="gcs-hp-disclaimer">* Calculele sunt orientative și pot varia în funcție de banca selectată</p>
                             </div>
@@ -181,109 +189,26 @@ function gcs_homepage_hero_shortcode() {
     </div>
 
     <style>
-        /* ==================== EXACT FIGMA DESIGN - TAILWIND CONVERSIONS ==================== */
-
-        /* Wrapper Reset */
-        .gcs-homepage-wrapper {
+        /* ==================== RESET ==================== */
+        .gcs-hp-wrapper {
             all: initial !important;
             display: block !important;
         }
 
-        .gcs-homepage-wrapper *,
-        .gcs-homepage-wrapper *::before,
-        .gcs-homepage-wrapper *::after {
+        .gcs-hp-wrapper *,
+        .gcs-hp-wrapper *::before,
+        .gcs-hp-wrapper *::after {
             box-sizing: border-box !important;
         }
 
-        /* ==================== TYPOGRAPHY (Exact Tailwind Font Stack) ==================== */
-
-        /* text-3xl: 1.875rem / 2.25rem */
-        .gcs-hp-h1 {
-            font-size: 1.875rem !important;
-            line-height: 2.25rem !important;
-            font-weight: 400 !important;
-            color: #ffffff !important;
-            margin-bottom: 1.5rem !important; /* mb-6 */
+        /* Global font */
+        .gcs-hp-wrapper,
+        .gcs-hp-wrapper * {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
         }
 
-        @media (min-width: 768px) {
-            /* md:text-4xl */
-            .gcs-hp-h1 {
-                font-size: 2.25rem !important;
-                line-height: 2.5rem !important;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            /* lg:text-5xl */
-            .gcs-hp-h1 {
-                font-size: 3rem !important;
-                line-height: 1 !important;
-            }
-        }
-
-        /* text-xl: 1.25rem / 1.75rem */
-        .gcs-hp-subtitle {
-            font-size: 1.25rem !important;
-            line-height: 1.75rem !important;
-            color: #e5e7eb !important; /* text-gray-200 */
-            margin-bottom: 2rem !important; /* mb-8 */
-        }
-
-        /* text-sm: 0.875rem / 1.25rem */
-        .gcs-hp-badge-text {
-            font-size: 0.875rem !important;
-            line-height: 1.25rem !important;
-        }
-
-        /* text-xs: 0.75rem / 1rem */
-        .gcs-hp-slider-labels,
-        .gcs-hp-disclaimer {
-            font-size: 0.75rem !important;
-            line-height: 1rem !important;
-        }
-
-        /* text-gray-300: #d1d5db */
-        .gcs-hp-text-gray-300 {
-            color: #d1d5db !important;
-        }
-
-        /* text-gray-500: #6b7280 */
-        .gcs-hp-slider-labels,
-        .gcs-hp-disclaimer {
-            color: #6b7280 !important;
-        }
-
-        /* text-gray-600: #4b5563 */
-        .gcs-hp-text-gray-600 {
-            color: #4b5563 !important;
-        }
-
-        /* text-gray-700: #374151 */
-        .gcs-hp-label {
-            color: #374151 !important;
-        }
-
-        /* text-[#003D7A] */
-        .gcs-hp-text-primary,
-        .gcs-hp-calc-title {
-            color: #003D7A !important;
-        }
-
-        /* text-[#0066CC] */
-        .gcs-hp-text-accent,
-        .gcs-hp-value {
-            color: #0066CC !important;
-        }
-
-        /* text-white */
-        .gcs-hp-text-white,
-        .gcs-hp-badge-text > div:first-child {
-            color: #ffffff !important;
-        }
-
-        /* ==================== HEADER (fixed top-0 left-0 right-0 z-50) ==================== */
-
+        /* ==================== HEADER ==================== */
+        /* fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 */
         .gcs-hp-header {
             position: fixed !important;
             top: 0 !important;
@@ -291,16 +216,17 @@ function gcs_homepage_hero_shortcode() {
             right: 0 !important;
             z-index: 50 !important;
             transition-property: all !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             background-color: transparent !important;
             padding-top: 1rem !important; /* py-4 */
             padding-bottom: 1rem !important;
         }
 
+        /* bg-white shadow-md py-3 */
         .gcs-hp-header.scrolled {
-            background-color: #ffffff !important; /* bg-white */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; /* shadow-md */
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
             padding-top: 0.75rem !important; /* py-3 */
             padding-bottom: 0.75rem !important;
         }
@@ -308,66 +234,77 @@ function gcs_homepage_hero_shortcode() {
         /* container mx-auto px-4 */
         .gcs-hp-container {
             width: 100% !important;
-            max-width: 80rem !important; /* Tailwind container max-width */
+            max-width: 80rem !important;
             margin-left: auto !important;
             margin-right: auto !important;
-            padding-left: 1rem !important; /* px-4 */
+            padding-left: 1rem !important;
             padding-right: 1rem !important;
         }
 
         /* flex items-center justify-between */
-        .gcs-hp-flex-between {
+        .gcs-hp-header-content {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
         }
 
-        /* Logo - Increased size for better visibility */
-        .gcs-hp-logo {
+        /* ==================== LOGO ==================== */
+        /* flex items-center gap-2 */
+        .gcs-hp-logo-btn {
             display: flex !important;
             align-items: center !important;
-            gap: 0.5rem !important;
+            gap: 0.5rem !important; /* gap-2 */
             text-decoration: none !important;
-            position: relative !important;
-            height: 4rem !important; /* Increased from 2.5rem */
-            width: 250px !important; /* Fixed width for better prominence */
+            cursor: pointer !important;
         }
 
-        @media (min-width: 768px) {
-            .gcs-hp-logo {
-                width: 300px !important; /* Larger on desktop */
-            }
-        }
-
-        .gcs-hp-logo img {
-            height: 4rem !important; /* Increased from 2.5rem */
-            width: 100% !important; /* Stretch to container width */
-            max-width: none !important;
-            object-fit: contain !important; /* Maintain aspect ratio while fitting */
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            transition-property: opacity !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+        /* w-10 h-10 rounded-full bg-white / bg-[#003D7A] */
+        .gcs-hp-logo-circle {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 2.5rem !important; /* w-10 */
+            height: 2.5rem !important; /* h-10 */
+            border-radius: 50% !important; /* rounded-full */
+            background-color: #ffffff !important; /* bg-white when not scrolled */
+            transition-property: background-color !important;
             transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
-        .gcs-hp-logo-white {
-            opacity: 1 !important;
+        .gcs-hp-header.scrolled .gcs-hp-logo-circle {
+            background-color: #003D7A !important; /* bg-[#003D7A] when scrolled */
         }
 
-        .gcs-hp-logo-blue {
-            opacity: 0 !important;
+        /* w-6 h-6 text-[#003D7A] / text-white */
+        .gcs-hp-logo-icon {
+            width: 1.5rem !important; /* w-6 */
+            height: 1.5rem !important; /* h-6 */
+            color: #003D7A !important; /* text-[#003D7A] when not scrolled */
+            transition-property: color !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
-        .gcs-hp-header.scrolled .gcs-hp-logo-white {
-            opacity: 0 !important;
+        .gcs-hp-header.scrolled .gcs-hp-logo-icon {
+            color: #ffffff !important; /* text-white when scrolled */
         }
 
-        .gcs-hp-header.scrolled .gcs-hp-logo-blue {
-            opacity: 1 !important;
+        /* Logo text - transition-colors text-white / text-[#003D7A] */
+        .gcs-hp-logo-text {
+            transition-property: color !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: #ffffff !important; /* text-white when not scrolled */
+            font-size: 1rem !important;
+            font-weight: 400 !important;
         }
 
+        .gcs-hp-header.scrolled .gcs-hp-logo-text {
+            color: #003D7A !important; /* text-[#003D7A] when scrolled */
+        }
+
+        /* ==================== NAVIGATION ==================== */
         /* hidden md:flex items-center gap-8 */
         .gcs-hp-nav-desktop {
             display: none !important;
@@ -381,15 +318,14 @@ function gcs_homepage_hero_shortcode() {
             }
         }
 
-        /* Navigation Links - transition-colors hover:text-[#0066CC] */
+        /* transition-colors hover:text-[#0066CC] text-white / text-gray-700 */
         .gcs-hp-nav-link {
             transition-property: color !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             color: #ffffff !important; /* text-white when not scrolled */
             text-decoration: none !important;
             font-size: 1rem !important;
-            font-weight: 400 !important;
         }
 
         .gcs-hp-nav-link:hover {
@@ -397,49 +333,56 @@ function gcs_homepage_hero_shortcode() {
         }
 
         .gcs-hp-header.scrolled .gcs-hp-nav-link {
-            color: #374151 !important; /* text-gray-700 */
+            color: #374151 !important; /* text-gray-700 when scrolled */
         }
 
+        /* ==================== CTA BUTTON ==================== */
         /* hidden md:block */
-        .gcs-hp-cta-desktop {
+        .gcs-hp-cta-wrapper {
             display: none !important;
         }
 
         @media (min-width: 768px) {
-            .gcs-hp-cta-desktop {
+            .gcs-hp-cta-wrapper {
                 display: block !important;
             }
         }
 
-        /* Button CTA - bg-[#0066CC] hover:bg-[#0052A3] text-white rounded-lg */
-        .gcs-hp-btn-cta {
+        /* bg-[#0066CC] hover:bg-[#0052A3] text-white rounded-lg */
+        .gcs-hp-btn-primary {
             display: inline-flex !important;
-            height: 2.5rem !important; /* h-10 (Button size="lg") */
+            height: 2.5rem !important; /* h-10 (size="lg") */
             align-items: center !important;
             justify-content: center !important;
-            border-radius: 0.5rem !important; /* rounded-lg */
-            background-color: #0066CC !important;
             padding-left: 1.5rem !important; /* px-6 */
             padding-right: 1.5rem !important;
             padding-top: 0.5rem !important; /* py-2 */
             padding-bottom: 0.5rem !important;
+            background-color: #0066CC !important;
+            color: #ffffff !important;
+            border-radius: 0.5rem !important; /* rounded-lg */
             font-size: 0.875rem !important;
             font-weight: 500 !important;
-            color: #ffffff !important;
             text-decoration: none !important;
             transition-property: all !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             border: none !important;
             cursor: pointer !important;
         }
 
-        .gcs-hp-btn-cta:hover {
+        .gcs-hp-btn-primary:hover {
             background-color: #0052A3 !important;
         }
 
+        /* w-full */
+        .gcs-hp-btn-full {
+            width: 100% !important;
+        }
+
+        /* ==================== MOBILE MENU ==================== */
         /* md:hidden */
-        .gcs-hp-mobile-btn {
+        .gcs-hp-mobile-toggle {
             display: flex !important;
             background: none !important;
             border: none !important;
@@ -448,87 +391,85 @@ function gcs_homepage_hero_shortcode() {
         }
 
         @media (min-width: 768px) {
-            .gcs-hp-mobile-btn {
+            .gcs-hp-mobile-toggle {
                 display: none !important;
             }
         }
 
-        .gcs-hp-mobile-btn {
+        /* w-6 h-6 */
+        .gcs-hp-menu-icon,
+        .gcs-hp-close-icon {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
             color: #ffffff !important;
+            transition-property: color !important;
+            transition-duration: 300ms !important;
         }
 
-        .gcs-hp-header.scrolled .gcs-hp-mobile-btn {
+        .gcs-hp-header.scrolled .gcs-hp-menu-icon,
+        .gcs-hp-header.scrolled .gcs-hp-close-icon {
             color: #003D7A !important;
         }
 
         .gcs-hp-menu-icon {
             display: block !important;
-            width: 1.5rem !important;
-            height: 1.5rem !important;
         }
 
         .gcs-hp-close-icon {
             display: none !important;
-            width: 1.5rem !important;
-            height: 1.5rem !important;
         }
 
-        .gcs-hp-mobile-btn.active .gcs-hp-menu-icon {
+        .gcs-hp-mobile-toggle.active .gcs-hp-menu-icon {
             display: none !important;
         }
 
-        .gcs-hp-mobile-btn.active .gcs-hp-close-icon {
+        .gcs-hp-mobile-toggle.active .gcs-hp-close-icon {
             display: block !important;
         }
 
         /* md:hidden mt-4 pb-4 flex flex-col gap-4 bg-white rounded-lg shadow-lg p-4 */
-        .gcs-hp-nav-mobile {
+        .gcs-hp-mobile-menu {
             display: none !important;
         }
 
-        .gcs-hp-nav-mobile.active {
+        .gcs-hp-mobile-menu.open {
             display: flex !important;
             flex-direction: column !important;
             gap: 1rem !important; /* gap-4 */
             margin-top: 1rem !important; /* mt-4 */
+            padding: 1rem !important; /* p-4 */
             padding-bottom: 1rem !important; /* pb-4 */
             background-color: #ffffff !important;
             border-radius: 0.5rem !important; /* rounded-lg */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* shadow-lg */
-            padding: 1rem !important; /* p-4 */
         }
 
         @media (min-width: 768px) {
-            .gcs-hp-nav-mobile {
+            .gcs-hp-mobile-menu {
                 display: none !important;
             }
         }
 
         /* text-gray-700 hover:text-[#0066CC] text-left */
-        .gcs-hp-nav-link-mobile {
+        .gcs-hp-mobile-link {
             color: #374151 !important; /* text-gray-700 */
             text-decoration: none !important;
             text-align: left !important;
             font-size: 1rem !important;
             padding: 0.5rem 0 !important;
             transition-property: color !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
         }
 
-        .gcs-hp-nav-link-mobile:hover {
+        .gcs-hp-mobile-link:hover {
             color: #0066CC !important;
         }
 
-        .gcs-hp-btn-mobile {
-            width: 100% !important;
-        }
-
-        /* ==================== HERO (relative bg-gradient-to-br pt-32 pb-16 md:pt-40 md:pb-24) ==================== */
-
+        /* ==================== HERO SECTION ==================== */
+        /* relative bg-gradient-to-br from-[#003D7A] to-[#001f3f] pt-32 pb-16 md:pt-40 md:pb-24 */
         .gcs-hp-hero {
             position: relative !important;
-            background-image: linear-gradient(to bottom right, #003D7A, #001f3f) !important; /* bg-gradient-to-br from-[#003D7A] to-[#001f3f] */
+            background-image: linear-gradient(to bottom right, #003D7A, #001f3f) !important;
             padding-top: 8rem !important; /* pt-32 */
             padding-bottom: 4rem !important; /* pb-16 */
         }
@@ -559,9 +500,9 @@ function gcs_homepage_hero_shortcode() {
         /* grid lg:grid-cols-2 gap-12 items-center */
         .gcs-hp-grid {
             display: grid !important;
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
             gap: 3rem !important; /* gap-12 */
             align-items: center !important;
-            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
         }
 
         @media (min-width: 1024px) {
@@ -570,6 +511,46 @@ function gcs_homepage_hero_shortcode() {
             }
         }
 
+        /* ==================== HERO CONTENT ==================== */
+        /* text-white */
+        .gcs-hp-hero-content {
+            color: #ffffff !important;
+        }
+
+        /* text-white mb-6 text-3xl md:text-4xl lg:text-5xl */
+        .gcs-hp-h1 {
+            color: #ffffff !important;
+            margin-bottom: 1.5rem !important; /* mb-6 */
+            font-size: 1.875rem !important; /* text-3xl */
+            line-height: 2.25rem !important;
+            font-weight: 400 !important;
+            margin-top: 0 !important;
+        }
+
+        @media (min-width: 768px) {
+            .gcs-hp-h1 {
+                font-size: 2.25rem !important; /* md:text-4xl */
+                line-height: 2.5rem !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gcs-hp-h1 {
+                font-size: 3rem !important; /* lg:text-5xl */
+                line-height: 1 !important;
+            }
+        }
+
+        /* text-xl text-gray-200 mb-8 */
+        .gcs-hp-subtitle {
+            font-size: 1.25rem !important; /* text-xl */
+            line-height: 1.75rem !important;
+            color: #e5e7eb !important; /* text-gray-200 */
+            margin-bottom: 2rem !important; /* mb-8 */
+            margin-top: 0 !important;
+        }
+
+        /* ==================== CTA BUTTONS ==================== */
         /* flex flex-col sm:flex-row gap-4 */
         .gcs-hp-cta-group {
             display: flex !important;
@@ -583,25 +564,23 @@ function gcs_homepage_hero_shortcode() {
             }
         }
 
-        /* bg-white text-[#003D7A] hover:bg-gray-100 rounded-lg transition-all shadow-lg */
+        /* bg-white text-[#003D7A] hover:bg-gray-100 rounded-lg shadow-lg */
         .gcs-hp-btn-white {
             display: inline-flex !important;
-            height: 2.5rem !important; /* Button size="lg" h-10 */
+            height: 2.5rem !important; /* size="lg" h-10 */
             align-items: center !important;
             justify-content: center !important;
-            gap: 0.5rem !important;
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
             background-color: #ffffff !important;
             color: #003D7A !important;
             border-radius: 0.5rem !important; /* rounded-lg */
-            padding-left: 1.5rem !important; /* px-6 */
-            padding-right: 1.5rem !important;
-            padding-top: 0.5rem !important; /* py-2 */
-            padding-bottom: 0.5rem !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
             text-decoration: none !important;
             transition-property: all !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* shadow-lg */
             border: none !important;
@@ -612,38 +591,36 @@ function gcs_homepage_hero_shortcode() {
             background-color: #f3f4f6 !important; /* hover:bg-gray-100 */
         }
 
-        /* border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#003D7A] rounded-lg */
+        /* border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#003D7A] */
         .gcs-hp-btn-outline {
             display: inline-flex !important;
             height: 2.5rem !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 0.5rem !important;
-            border-width: 2px !important; /* border-2 */
-            border-color: #ffffff !important; /* border-white */
-            color: #ffffff !important; /* text-white */
-            background-color: transparent !important; /* bg-transparent */
-            border-radius: 0.5rem !important; /* rounded-lg */
             padding-left: 1.5rem !important;
             padding-right: 1.5rem !important;
             padding-top: 0.5rem !important;
             padding-bottom: 0.5rem !important;
+            border: 2px solid #ffffff !important; /* border-2 border-white */
+            color: #ffffff !important;
+            background-color: transparent !important;
+            border-radius: 0.5rem !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
             text-decoration: none !important;
             transition-property: all !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
             cursor: pointer !important;
         }
 
         .gcs-hp-btn-outline:hover {
-            background-color: #ffffff !important; /* hover:bg-white */
-            color: #003D7A !important; /* hover:text-[#003D7A] */
+            background-color: #ffffff !important;
+            color: #003D7A !important;
         }
 
+        /* ==================== TRUST BADGES ==================== */
         /* mt-12 flex flex-wrap gap-6 items-center */
-        .gcs-hp-trust-badges {
+        .gcs-hp-badges {
             margin-top: 3rem !important; /* mt-12 */
             display: flex !important;
             flex-wrap: wrap !important;
@@ -667,25 +644,35 @@ function gcs_homepage_hero_shortcode() {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            flex-shrink: 0 !important;
         }
 
         /* w-6 h-6 text-white */
-        .gcs-hp-svg-24 {
+        .gcs-hp-icon {
             width: 1.5rem !important; /* w-6 */
             height: 1.5rem !important; /* h-6 */
             color: #ffffff !important;
         }
 
-        /* ==================== CALCULATOR ==================== */
+        /* text-sm */
+        .gcs-hp-badge-text {
+            font-size: 0.875rem !important; /* text-sm */
+            line-height: 1.25rem !important;
+            color: #ffffff !important;
+        }
 
+        /* text-gray-300 */
+        .gcs-hp-text-gray-300 {
+            color: #d1d5db !important; /* text-gray-300 */
+        }
+
+        /* ==================== CALCULATOR ==================== */
         /* lg:ml-auto w-full lg:max-w-md */
-        .gcs-hp-calc-wrapper {
+        .gcs-hp-calc-outer {
             width: 100% !important; /* w-full */
         }
 
         @media (min-width: 1024px) {
-            .gcs-hp-calc-wrapper {
+            .gcs-hp-calc-outer {
                 margin-left: auto !important; /* lg:ml-auto */
                 max-width: 28rem !important; /* lg:max-w-md */
             }
@@ -707,10 +694,12 @@ function gcs_homepage_hero_shortcode() {
 
         /* text-[#003D7A] mb-6 text-xl md:text-2xl */
         .gcs-hp-calc-title {
+            color: #003D7A !important;
+            margin-bottom: 1.5rem !important; /* mb-6 */
             font-size: 1.25rem !important; /* text-xl */
             line-height: 1.75rem !important;
-            margin-bottom: 1.5rem !important; /* mb-6 */
             font-weight: 400 !important;
+            margin-top: 0 !important;
         }
 
         @media (min-width: 768px) {
@@ -721,7 +710,7 @@ function gcs_homepage_hero_shortcode() {
         }
 
         /* space-y-6 */
-        .gcs-hp-calc-content {
+        .gcs-hp-calc-body {
             display: flex !important;
             flex-direction: column !important;
             gap: 1.5rem !important; /* space-y-6 */
@@ -729,8 +718,9 @@ function gcs_homepage_hero_shortcode() {
 
         /* text-gray-700 mb-2 block */
         .gcs-hp-label {
-            display: block !important;
+            color: #374151 !important; /* text-gray-700 */
             margin-bottom: 0.5rem !important; /* mb-2 */
+            display: block !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
         }
@@ -743,8 +733,14 @@ function gcs_homepage_hero_shortcode() {
             margin-bottom: 0.5rem !important; /* mb-2 */
         }
 
-        /* Select wrapper */
-        .gcs-hp-select-wrapper {
+        /* text-[#0066CC] */
+        .gcs-hp-value {
+            color: #0066CC !important;
+            font-size: 0.875rem !important;
+        }
+
+        /* Select */
+        .gcs-hp-select-wrap {
             position: relative !important;
         }
 
@@ -829,6 +825,9 @@ function gcs_homepage_hero_shortcode() {
         .gcs-hp-slider-labels {
             display: flex !important;
             justify-content: space-between !important;
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+            color: #6b7280 !important; /* text-gray-500 */
             margin-top: 0.25rem !important; /* mt-1 */
         }
 
@@ -849,33 +848,46 @@ function gcs_homepage_hero_shortcode() {
             align-items: center !important;
         }
 
-        /* w-full */
-        .gcs-hp-w-full {
-            width: 100% !important;
+        /* text-gray-600 */
+        .gcs-hp-text-gray-600 {
+            color: #4b5563 !important;
+            font-size: 0.875rem !important;
         }
 
-        /* text-center */
+        /* text-[#003D7A] */
+        .gcs-hp-text-primary {
+            color: #003D7A !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+        }
+
+        /* text-[#0066CC] */
+        .gcs-hp-text-accent {
+            color: #0066CC !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+        }
+
+        /* text-xs text-gray-500 text-center */
         .gcs-hp-disclaimer {
+            font-size: 0.75rem !important; /* text-xs */
+            line-height: 1rem !important;
+            color: #6b7280 !important; /* text-gray-500 */
             text-align: center !important;
-        }
-
-        /* Global font family (Tailwind default) */
-        .gcs-homepage-wrapper,
-        .gcs-homepage-wrapper * {
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+            margin: 0 !important;
         }
     </style>
 
     <script>
         (function() {
-            if (window.gcsHomepageInitialized) return;
-            window.gcsHomepageInitialized = true;
+            if (window.gcsHpInit) return;
+            window.gcsHpInit = true;
 
             const header = document.querySelector('.gcs-hp-header');
-            const mobileBtn = document.querySelector('.gcs-hp-mobile-btn');
-            const mobileNav = document.querySelector('.gcs-hp-nav-mobile');
+            const mobileToggle = document.querySelector('.gcs-hp-mobile-toggle');
+            const mobileMenu = document.querySelector('.gcs-hp-mobile-menu');
 
-            // Header scroll
+            // Header scroll effect
             function handleScroll() {
                 if (window.scrollY > 20) {
                     header.classList.add('scrolled');
@@ -884,28 +896,32 @@ function gcs_homepage_hero_shortcode() {
                 }
             }
 
-            // Mobile menu
-            function toggleMobile() {
-                mobileBtn.classList.toggle('active');
-                mobileNav.classList.toggle('active');
-            }
-
-            function closeMobile() {
-                mobileBtn.classList.remove('active');
-                mobileNav.classList.remove('active');
-            }
-
             window.addEventListener('scroll', handleScroll);
-            if (mobileBtn) mobileBtn.addEventListener('click', toggleMobile);
-
-            document.querySelectorAll('.gcs-hp-nav-link-mobile').forEach(link => {
-                link.addEventListener('click', closeMobile);
-            });
-
             handleScroll();
 
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) closeMobile();
+            // Mobile menu toggle
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileToggle.classList.toggle('active');
+                    mobileMenu.classList.toggle('open');
+                });
+            }
+
+            // Close mobile menu when link clicked
+            const mobileLinks = document.querySelectorAll('.gcs-hp-mobile-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                });
+            });
+
+            // Close on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                }
             });
 
             // Calculator
@@ -914,7 +930,7 @@ function gcs_homepage_hero_shortcode() {
             const period = document.getElementById('gcs-period');
             const amountVal = document.getElementById('gcs-amount-value');
             const periodVal = document.getElementById('gcs-period-value');
-            const monthly = document.getElementById('gcs-monthly-payment');
+            const monthly = document.getElementById('gcs-monthly');
             const dae = document.getElementById('gcs-dae');
 
             const rates = {
