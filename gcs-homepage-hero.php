@@ -199,12 +199,61 @@ function gcs_homepage_hero_shortcode() {
         .gcs-hp-wrapper *::before,
         .gcs-hp-wrapper *::after {
             box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            font-size: 100% !important;
+            font: inherit !important;
+            vertical-align: baseline !important;
+        }
+
+        /* SVG reset */
+        .gcs-hp-wrapper svg {
+            display: inline-block !important;
+            vertical-align: middle !important;
+            overflow: visible !important;
+        }
+
+        /* Remove all link styles */
+        .gcs-hp-wrapper a {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+
+        /* Remove list styles */
+        .gcs-hp-wrapper ul,
+        .gcs-hp-wrapper ol {
+            list-style: none !important;
+        }
+
+        /* Remove button/input defaults */
+        .gcs-hp-wrapper button,
+        .gcs-hp-wrapper input,
+        .gcs-hp-wrapper select,
+        .gcs-hp-wrapper textarea {
+            font-family: inherit !important;
+            font-size: 100% !important;
+            line-height: 1.15 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: none !important;
+        }
+
+        /* Remove button defaults */
+        .gcs-hp-wrapper button {
+            overflow: visible !important;
+            text-transform: none !important;
+            -webkit-appearance: button !important;
         }
 
         /* Global font */
         .gcs-hp-wrapper,
         .gcs-hp-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
         }
 
         /* ==================== HEADER ==================== */

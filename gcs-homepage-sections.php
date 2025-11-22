@@ -595,6 +595,12 @@ function gcs_homepage_sections_shortcode() {
         .gcs-hs-wrapper *::before,
         .gcs-hs-wrapper *::after {
             box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            font-size: 100% !important;
+            font: inherit !important;
+            vertical-align: baseline !important;
         }
 
         /* SVG reset to prevent theme interference */
@@ -613,10 +619,46 @@ function gcs_homepage_sections_shortcode() {
             vector-effect: non-scaling-stroke !important;
         }
 
+        /* Remove all link styles */
+        .gcs-hs-wrapper a {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+
+        /* Remove list styles */
+        .gcs-hs-wrapper ul,
+        .gcs-hs-wrapper ol {
+            list-style: none !important;
+        }
+
+        /* Remove button/input defaults */
+        .gcs-hs-wrapper button,
+        .gcs-hs-wrapper input,
+        .gcs-hs-wrapper select,
+        .gcs-hs-wrapper textarea {
+            font-family: inherit !important;
+            font-size: 100% !important;
+            line-height: 1.15 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: none !important;
+        }
+
+        /* Remove button defaults */
+        .gcs-hs-wrapper button {
+            overflow: visible !important;
+            text-transform: none !important;
+            -webkit-appearance: button !important;
+        }
+
         /* Global font */
         .gcs-hs-wrapper,
         .gcs-hs-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
         }
 
         /* ==================== COMMON STYLES ==================== */

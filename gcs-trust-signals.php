@@ -182,12 +182,61 @@ function gcs_trust_signals_shortcode() {
         .gcs-ts-wrapper *::before,
         .gcs-ts-wrapper *::after {
             box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            font-size: 100% !important;
+            font: inherit !important;
+            vertical-align: baseline !important;
+        }
+
+        /* SVG reset */
+        .gcs-ts-wrapper svg {
+            display: inline-block !important;
+            vertical-align: middle !important;
+            overflow: visible !important;
+        }
+
+        /* Remove all link styles */
+        .gcs-ts-wrapper a {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+
+        /* Remove list styles */
+        .gcs-ts-wrapper ul,
+        .gcs-ts-wrapper ol {
+            list-style: none !important;
+        }
+
+        /* Remove button/input defaults */
+        .gcs-ts-wrapper button,
+        .gcs-ts-wrapper input,
+        .gcs-ts-wrapper select,
+        .gcs-ts-wrapper textarea {
+            font-family: inherit !important;
+            font-size: 100% !important;
+            line-height: 1.15 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: none !important;
+        }
+
+        /* Remove button defaults */
+        .gcs-ts-wrapper button {
+            overflow: visible !important;
+            text-transform: none !important;
+            -webkit-appearance: button !important;
         }
 
         /* Global font */
         .gcs-ts-wrapper,
         .gcs-ts-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
         }
 
         /* ==================== SECTION ==================== */

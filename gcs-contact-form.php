@@ -222,6 +222,12 @@ function gcs_contact_form_shortcode() {
         .gcs-cf-wrapper *::before,
         .gcs-cf-wrapper *::after {
             box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            font-size: 100% !important;
+            font: inherit !important;
+            vertical-align: baseline !important;
         }
 
         /* SVG reset */
@@ -231,10 +237,46 @@ function gcs_contact_form_shortcode() {
             overflow: visible !important;
         }
 
+        /* Remove all link styles */
+        .gcs-cf-wrapper a {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+
+        /* Remove list styles */
+        .gcs-cf-wrapper ul,
+        .gcs-cf-wrapper ol {
+            list-style: none !important;
+        }
+
+        /* Remove button/input defaults */
+        .gcs-cf-wrapper button,
+        .gcs-cf-wrapper input,
+        .gcs-cf-wrapper select,
+        .gcs-cf-wrapper textarea {
+            font-family: inherit !important;
+            font-size: 100% !important;
+            line-height: 1.15 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: none !important;
+        }
+
+        /* Remove button defaults */
+        .gcs-cf-wrapper button {
+            overflow: visible !important;
+            text-transform: none !important;
+            -webkit-appearance: button !important;
+        }
+
         /* Global font */
         .gcs-cf-wrapper,
         .gcs-cf-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+            text-rendering: optimizeLegibility !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
         }
 
         /* ==================== SECTION ==================== */
