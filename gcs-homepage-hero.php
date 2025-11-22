@@ -336,13 +336,20 @@ function gcs_homepage_hero_shortcode() {
             text-decoration: none !important;
             position: relative !important;
             height: 4rem !important; /* Increased from 2.5rem */
-            min-width: 200px !important;
+            width: 250px !important; /* Fixed width for better prominence */
+        }
+
+        @media (min-width: 768px) {
+            .gcs-hp-logo {
+                width: 300px !important; /* Larger on desktop */
+            }
         }
 
         .gcs-hp-logo img {
             height: 4rem !important; /* Increased from 2.5rem */
-            width: auto !important;
+            width: 100% !important; /* Stretch to container width */
             max-width: none !important;
+            object-fit: contain !important; /* Maintain aspect ratio while fitting */
             position: absolute !important;
             top: 0 !important;
             left: 0 !important;
