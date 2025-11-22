@@ -360,8 +360,9 @@ function gcs_faq_cta_shortcode() {
             border: 1px solid #e5e7eb !important; /* border-gray-200 */
             padding-left: 2rem !important; /* px-8 - increased */
             padding-right: 2rem !important;
-            padding-top: 0.5rem !important; /* py-2 - increased */
-            padding-bottom: 0.5rem !important;
+            padding-top: 0.75rem !important; /* py-3 - increased */
+            padding-bottom: 0.75rem !important;
+            min-height: 5rem !important; /* Minimum height for containers */
             overflow: hidden !important;
         }
 
@@ -372,8 +373,8 @@ function gcs_faq_cta_shortcode() {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            padding-top: 1.25rem !important; /* py-5 - increased */
-            padding-bottom: 1.25rem !important;
+            padding-top: 1.5rem !important; /* py-6 - increased more */
+            padding-bottom: 1.5rem !important;
             text-align: left !important;
             color: #003D7A !important; /* text-[#003D7A] */
             cursor: pointer !important;
@@ -426,8 +427,8 @@ function gcs_faq_cta_shortcode() {
         /* Answer: text-gray-600 */
         .gcs-faq-answer {
             color: #4b5563 !important; /* text-gray-600 */
-            padding-top: 0.5rem !important; /* pt-2 - added */
-            padding-bottom: 1.5rem !important; /* pb-6 - increased */
+            padding-top: 0.75rem !important; /* pt-3 - increased */
+            padding-bottom: 2rem !important; /* pb-8 - increased more */
             font-size: 0.875rem !important;
             line-height: 1.5rem !important;
         }
@@ -572,17 +573,22 @@ function gcs_faq_cta_shortcode() {
 
         /* ==================== CTA BUTTON ==================== */
         /* size="lg" bg-white text-[#003D7A] hover:bg-gray-100 rounded-lg shadow-xl transition-all hover:scale-105 */
-        .gcs-cta-button {
+        .gcs-cta-button,
+        a.gcs-cta-button,
+        .gcs-faq-cta-wrapper .gcs-cta-button,
+        .gcs-faq-cta-wrapper a.gcs-cta-button {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             height: 2.5rem !important; /* size="lg" h-10 */
+            min-height: 2.5rem !important;
             padding-left: 1.5rem !important; /* size="lg" px-6 */
             padding-right: 1.5rem !important;
             padding-top: 0.5rem !important;
             padding-bottom: 0.5rem !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
+            /* AGGRESSIVE WHITE BACKGROUND */
             background-color: #ffffff !important; /* bg-white */
             background-image: none !important; /* Remove any gradient */
             background: #ffffff !important; /* Force solid white */
@@ -596,28 +602,51 @@ function gcs_faq_cta_shortcode() {
             cursor: pointer !important;
             text-decoration: none !important;
             outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
             transition-property: all !important; /* transition-all */
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
         }
 
-        .gcs-cta-button:hover {
+        .gcs-cta-button:hover,
+        a.gcs-cta-button:hover,
+        .gcs-faq-cta-wrapper .gcs-cta-button:hover,
+        .gcs-faq-cta-wrapper a.gcs-cta-button:hover {
             background-color: #f3f4f6 !important; /* hover:bg-gray-100 */
             background-image: none !important;
             background: #f3f4f6 !important; /* Force solid gray */
             color: #003D7A !important;
             transform: scale(1.05) !important; /* hover:scale-105 */
+            border: none !important;
+            outline: none !important;
+            text-decoration: none !important;
         }
 
         .gcs-cta-button:active,
         .gcs-cta-button:focus,
-        .gcs-cta-button:visited {
+        .gcs-cta-button:visited,
+        a.gcs-cta-button:active,
+        a.gcs-cta-button:focus,
+        a.gcs-cta-button:visited,
+        .gcs-faq-cta-wrapper .gcs-cta-button:active,
+        .gcs-faq-cta-wrapper .gcs-cta-button:focus,
+        .gcs-faq-cta-wrapper .gcs-cta-button:visited,
+        .gcs-faq-cta-wrapper a.gcs-cta-button:active,
+        .gcs-faq-cta-wrapper a.gcs-cta-button:focus,
+        .gcs-faq-cta-wrapper a.gcs-cta-button:visited {
             background-color: #ffffff !important;
             background-image: none !important;
             background: #ffffff !important;
             color: #003D7A !important;
             outline: none !important;
+            outline-width: 0 !important;
             border: none !important;
+            border-width: 0 !important;
+            text-decoration: none !important;
         }
 
         /* ==================== CTA FEATURES ==================== */
