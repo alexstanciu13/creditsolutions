@@ -34,7 +34,7 @@ function gcs_homepage_hero_shortcode() {
                     <!-- Desktop Navigation -->
                     <nav class="gcs-hp-nav-desktop">
                         <a href="<?php echo home_url(); ?>" class="gcs-hp-nav-link">Acasă</a>
-                        <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-hp-nav-link">Despre Noi</a>
+                        <a href="<?php echo home_url('/despre'); ?>" class="gcs-hp-nav-link">Despre Noi</a>
                         <a href="<?php echo home_url('/servicii'); ?>" class="gcs-hp-nav-link">Servicii</a>
                         <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-nav-link">Contact</a>
                     </nav>
@@ -61,7 +61,7 @@ function gcs_homepage_hero_shortcode() {
                 <!-- Mobile Menu -->
                 <nav class="gcs-hp-mobile-menu">
                     <a href="<?php echo home_url(); ?>" class="gcs-hp-mobile-link">Acasă</a>
-                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-hp-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/despre'); ?>" class="gcs-hp-mobile-link">Despre Noi</a>
                     <a href="<?php echo home_url('/servicii'); ?>" class="gcs-hp-mobile-link">Servicii</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-mobile-link">Contact</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-hp-btn-primary gcs-hp-btn-full">Aplică Acum</a>

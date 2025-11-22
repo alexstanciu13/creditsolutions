@@ -36,7 +36,7 @@ function gcs_services_page_shortcode() {
                     <!-- Desktop Navigation -->
                     <nav class="gcs-services-nav-desktop">
                         <a href="<?php echo home_url(); ?>" class="gcs-services-nav-link">Acasă</a>
-                        <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-services-nav-link">Despre Noi</a>
+                        <a href="<?php echo home_url('/despre'); ?>" class="gcs-services-nav-link">Despre Noi</a>
                         <a href="<?php echo home_url('/servicii'); ?>" class="gcs-services-nav-link">Servicii</a>
                         <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-nav-link">Contact</a>
                     </nav>
@@ -63,7 +63,7 @@ function gcs_services_page_shortcode() {
                 <!-- Mobile Menu -->
                 <nav class="gcs-services-mobile-menu">
                     <a href="<?php echo home_url(); ?>" class="gcs-services-mobile-link">Acasă</a>
-                    <a href="<?php echo home_url('/despre-noi'); ?>" class="gcs-services-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/despre'); ?>" class="gcs-services-mobile-link">Despre Noi</a>
                     <a href="<?php echo home_url('/servicii'); ?>" class="gcs-services-mobile-link">Servicii</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-mobile-link">Contact</a>
                     <a href="<?php echo home_url('/contact'); ?>" class="gcs-services-btn-primary gcs-services-btn-full">Aplică Acum</a>
@@ -1190,60 +1190,9 @@ function gcs_services_page_shortcode() {
                 }
             });
 
-            // Calculator
-            const creditType = document.getElementById('gcs-credit-type');
-            const amount = document.getElementById('gcs-amount');
-            const period = document.getElementById('gcs-period');
-            const amountVal = document.getElementById('gcs-amount-value');
-            const periodVal = document.getElementById('gcs-period-value');
-            const monthly = document.getElementById('gcs-monthly');
-            const dae = document.getElementById('gcs-dae');
-
-            const rates = {
-                nevoi: 0.085,
-                ipotecar: 0.065,
-                auto: 0.075,
-                juridice: 0.07,
-                refinantare: 0.06,
-                altele: 0.08
-            };
-
-            function formatNum(n) {
-                return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-            }
-
-            function calcPayment(p, r, m) {
-                const mr = r / 12;
-                return (p * mr * Math.pow(1 + mr, m)) / (Math.pow(1 + mr, m) - 1);
-            }
-
-            function calcDAE(r) {
-                return ((r + 0.015) * 100).toFixed(2);
-            }
-
-            function update() {
-                const ct = creditType.value;
-                const a = parseInt(amount.value);
-                const p = parseInt(period.value);
-
-                amountVal.textContent = formatNum(a) + ' RON';
-                periodVal.textContent = p + ' luni (' + Math.round(p / 12) + ' ani)';
-
-                const r = rates[ct] || 0.07;
-                const pay = calcPayment(a, r, p);
-                const d = calcDAE(r);
-
-                monthly.textContent = pay.toLocaleString('ro-RO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' RON';
-                dae.textContent = d.replace('.', ',') + '%';
-            }
-
-            if (creditType) creditType.addEventListener('change', update);
-            if (amount) amount.addEventListener('input', update);
-            if (period) period.addEventListener('input', update);
-
-            update();
         })();
     </script>
+
 
     <?php
     return ob_get_clean();
