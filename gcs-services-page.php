@@ -23,14 +23,16 @@ function gcs_services_page_shortcode() {
                 <div class="gcs-services-header-content">
                     <!-- Logo -->
                     <a href="<?php echo home_url(); ?>" class="gcs-services-logo-btn">
-                        <div class="gcs-services-logo-circle">
-                            <svg class="gcs-services-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <div class="gcs-services-logo-text">Global Credit Solutions</div>
+                        <img
+                            src="https://creditsolutions.ro/wp-content/uploads/2025/11/logo-alb.png"
+                            alt="Global Credit Solutions"
+                            class="gcs-services-logo-img gcs-services-logo-white"
+                        />
+                        <img
+                            src="https://creditsolutions.ro/wp-content/uploads/2025/11/logo-blue.png"
+                            alt="Global Credit Solutions"
+                            class="gcs-services-logo-img gcs-services-logo-blue"
+                        />
                     </a>
 
                     <!-- Desktop Navigation -->
@@ -409,59 +411,46 @@ function gcs_services_page_shortcode() {
         }
 
         /* ==================== LOGO ==================== */
-        /* flex items-center gap-2 */
+        /* Logo button container */
         .gcs-services-logo-btn {
-            display: flex !important;
+            display: inline-flex !important;
             align-items: center !important;
-            gap: 0.5rem !important; /* gap-2 */
             text-decoration: none !important;
             cursor: pointer !important;
+            position: relative !important;
+            height: 3rem !important; /* h-12 */
         }
 
-        /* w-10 h-10 rounded-full bg-white / bg-[#003D7A] */
-        .gcs-services-logo-circle {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 2.5rem !important; /* w-10 */
-            height: 2.5rem !important; /* h-10 */
-            border-radius: 50% !important; /* rounded-full */
-            background-color: #ffffff !important; /* bg-white when not scrolled */
-            transition-property: background-color !important;
+        /* h-12 w-auto transition-opacity duration-300 */
+        .gcs-services-logo-img {
+            height: 3rem !important; /* h-12 = 48px */
+            width: auto !important;
+            transition-property: opacity !important;
             transition-duration: 300ms !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: block !important;
         }
 
-        .gcs-services-header.scrolled .gcs-services-logo-circle {
-            background-color: #003D7A !important; /* bg-[#003D7A] when scrolled */
+        /* White logo - visible by default, hidden when scrolled */
+        .gcs-services-logo-white {
+            opacity: 1 !important;
+            position: relative !important;
         }
 
-        /* w-6 h-6 text-[#003D7A] / text-white */
-        .gcs-services-logo-icon {
-            width: 1.5rem !important; /* w-6 */
-            height: 1.5rem !important; /* h-6 */
-            color: #003D7A !important; /* text-[#003D7A] when not scrolled */
-            transition-property: color !important;
-            transition-duration: 300ms !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .gcs-services-header.scrolled .gcs-services-logo-white {
+            opacity: 0 !important;
         }
 
-        .gcs-services-header.scrolled .gcs-services-logo-icon {
-            color: #ffffff !important; /* text-white when scrolled */
+        /* Blue logo - hidden by default, visible when scrolled */
+        .gcs-services-logo-blue {
+            opacity: 0 !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
         }
 
-        /* Logo text - transition-colors text-white / text-[#003D7A] */
-        .gcs-services-logo-text {
-            transition-property: color !important;
-            transition-duration: 300ms !important;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-            color: #ffffff !important; /* text-white when not scrolled */
-            font-size: 1rem !important;
-            font-weight: 400 !important;
-        }
-
-        .gcs-services-header.scrolled .gcs-services-logo-text {
-            color: #003D7A !important; /* text-[#003D7A] when scrolled */
+        .gcs-services-header.scrolled .gcs-services-logo-blue {
+            opacity: 1 !important;
         }
 
         /* ==================== NAVIGATION ==================== */
