@@ -1239,6 +1239,8 @@ function gcs_homepage_sections_shortcode() {
         .gcs-hs-nav-icon {
             width: 1.25rem !important; /* w-5 */
             height: 1.25rem !important; /* h-5 */
+            color: inherit !important;
+            stroke: currentColor !important;
         }
 
         /* flex items-center gap-2 */
