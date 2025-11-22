@@ -360,78 +360,13 @@ function gcs_services_page_shortcode() {
         .gcs-services-wrapper *::before,
         .gcs-services-wrapper *::after {
             box-sizing: border-box !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0 !important;
-            font-size: 100% !important;
-            font: inherit !important;
-            vertical-align: baseline !important;
-        }
-
-        /* SVG reset */
-        .gcs-services-wrapper svg {
-            display: inline-block !important;
-            vertical-align: middle !important;
-            overflow: visible !important;
-        }
-
-        /* Remove all link styles */
-        .gcs-services-wrapper a {
-            background-color: transparent !important;
-            background-image: none !important;
-            background: transparent !important;
-            text-decoration: none !important;
-            color: inherit !important;
-            border: none !important;
-            outline: none !important;
-        }
-
-        .gcs-services-wrapper a:hover,
-        .gcs-services-wrapper a:active,
-        .gcs-services-wrapper a:focus,
-        .gcs-services-wrapper a:visited {
-            background-image: none !important;
-            text-decoration: none !important;
-            outline: none !important;
-            border: none !important;
-        }
-
-        /* Remove list styles */
-        .gcs-services-wrapper ul,
-        .gcs-services-wrapper ol {
-            list-style: none !important;
-        }
-
-        /* Remove button/input defaults */
-        .gcs-services-wrapper button,
-        .gcs-services-wrapper input,
-        .gcs-services-wrapper select,
-        .gcs-services-wrapper textarea {
-            font-family: inherit !important;
-            font-size: 100% !important;
-            line-height: 1.15 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: 0 !important;
-            background: none !important;
-        }
-
-        /* Remove button defaults */
-        .gcs-services-wrapper button {
-            overflow: visible !important;
-            text-transform: none !important;
-            -webkit-appearance: button !important;
         }
 
         /* Global font */
         .gcs-services-wrapper,
         .gcs-services-wrapper * {
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
-            text-rendering: optimizeLegibility !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
         }
-
 
         /* ==================== HEADER ==================== */
         /* fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 */
