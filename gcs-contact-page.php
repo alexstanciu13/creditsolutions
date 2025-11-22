@@ -201,7 +201,7 @@ function gcs_contact_page_shortcode() {
 
                             <p class="gcs-contact-privacy-text">
                                 Prin trimiterea formularului, ești de acord cu
-                                <a href="#" class="gcs-contact-privacy-link">Politica de Confidențialitate</a>
+                                <a href="/gdpr" class="gcs-contact-privacy-link">Politica de Confidențialitate</a>
                             </p>
 
                             <div class="gcs-contact-form-message"></div>
@@ -1205,18 +1205,36 @@ function gcs_contact_form_handler() {
 
     // Prepare email
     $to = 'contact@creditsolutions.ro';
-    $email_subject = 'Formular Contact: ' . $creditType;
-    $email_body = "Nume: $name\n";
-    $email_body .= "CNP/CUI: $cnp\n";
-    $email_body .= "Email: $email\n";
-    $email_body .= "Tip Credit: $creditType\n\n";
-    $email_body .= "Mesaj:\n$message\n";
+    $domain = parse_url(home_url(), PHP_URL_HOST);
+    $from_email = 'wordpress@' . $domain;
 
+    // Subject line with clear identifier
+    $email_subject = '[Contact Form] ' . $creditType . ' - ' . $name;
+
+    // Email body with clear formatting
+    $email_body = "Formular de contact - Global Credit Solutions\n";
+    $email_body .= "==========================================\n\n";
+    $email_body .= "Nume complet: $name\n";
+    $email_body .= "CNP/CUI: $cnp\n";
+    $email_body .= "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat') . "\n";
+    $email_body .= "Tip Credit: $creditType\n";
+    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
+    $email_body .= "Mesaj:\n";
+    $email_body .= "==========================================\n";
+    $email_body .= $message . "\n";
+    $email_body .= "==========================================\n\n";
+    $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
+
+    // Improved headers to avoid spam filters
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
-        'From: ' . get_bloginfo('name') . ' <noreply@' . parse_url(home_url(), PHP_URL_HOST) . '>',
+        'From: Global Credit Solutions <' . $from_email . '>',
+        'X-Mailer: PHP/' . phpversion(),
+        'X-Priority: 3',
+        'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
     );
 
+    // Add Reply-To with customer email if provided
     if (!empty($email)) {
         $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
     }
