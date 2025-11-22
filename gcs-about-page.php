@@ -548,23 +548,67 @@ function gcs_about_page_shortcode() {
             }
         }
 
-        /* Nav links - white initially, gray when scrolled */
-        .gcs-about-nav-link {
+        /* Nav links - AGGRESSIVE ISOLATION - white initially, gray when scrolled */
+        .gcs-about-nav-link,
+        a.gcs-about-nav-link,
+        .gcs-about-nav-desktop .gcs-about-nav-link,
+        .gcs-about-nav-desktop a.gcs-about-nav-link,
+        .gcs-about-header .gcs-about-nav-link,
+        .gcs-about-header a.gcs-about-nav-link {
             font-size: 0.875rem !important;
             font-weight: 500 !important;
             transition-property: color !important;
             transition-duration: 150ms !important;
             color: #ffffff !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            text-decoration: none !important;
             cursor: pointer !important;
         }
 
-        .gcs-about-header.scrolled .gcs-about-nav-link {
+        .gcs-about-header.scrolled .gcs-about-nav-link,
+        .gcs-about-header.scrolled a.gcs-about-nav-link,
+        .gcs-about-header.scrolled .gcs-about-nav-desktop .gcs-about-nav-link,
+        .gcs-about-header.scrolled .gcs-about-nav-desktop a.gcs-about-nav-link {
             color: #4b5563 !important;
         }
 
         .gcs-about-nav-link:hover,
-        .gcs-about-nav-link.active {
+        a.gcs-about-nav-link:hover,
+        .gcs-about-nav-desktop .gcs-about-nav-link:hover,
+        .gcs-about-nav-desktop a.gcs-about-nav-link:hover,
+        .gcs-about-nav-link.active,
+        a.gcs-about-nav-link.active {
             color: #0066CC !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            background: transparent !important;
+            text-decoration: none !important;
+        }
+
+        /* Force white on visited/active/focus when not scrolled */
+        .gcs-about-nav-link:visited,
+        .gcs-about-nav-link:active,
+        .gcs-about-nav-link:focus,
+        a.gcs-about-nav-link:visited,
+        a.gcs-about-nav-link:active,
+        a.gcs-about-nav-link:focus {
+            color: #ffffff !important;
+            background: transparent !important;
+            outline: none !important;
+        }
+
+        /* When scrolled, visited/active/focus should be gray */
+        .gcs-about-header.scrolled .gcs-about-nav-link:visited,
+        .gcs-about-header.scrolled .gcs-about-nav-link:active,
+        .gcs-about-header.scrolled .gcs-about-nav-link:focus,
+        .gcs-about-header.scrolled a.gcs-about-nav-link:visited,
+        .gcs-about-header.scrolled a.gcs-about-nav-link:active,
+        .gcs-about-header.scrolled a.gcs-about-nav-link:focus {
+            color: #4b5563 !important;
         }
 
         /* CTA Button Desktop */
@@ -675,16 +719,50 @@ function gcs_about_page_shortcode() {
             }
         }
 
-        .gcs-about-mobile-link {
+        /* Mobile links - AGGRESSIVE ISOLATION */
+        .gcs-about-mobile-link,
+        a.gcs-about-mobile-link,
+        .gcs-about-mobile-menu .gcs-about-mobile-link,
+        .gcs-about-mobile-menu a.gcs-about-mobile-link,
+        .gcs-about-header .gcs-about-mobile-link,
+        .gcs-about-header a.gcs-about-mobile-link {
             color: #ffffff !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
             padding: 0.5rem !important;
             cursor: pointer !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            text-decoration: none !important;
         }
 
-        .gcs-about-header.scrolled .gcs-about-mobile-link {
+        .gcs-about-mobile-link:hover,
+        a.gcs-about-mobile-link:hover,
+        .gcs-about-mobile-link:visited,
+        a.gcs-about-mobile-link:visited,
+        .gcs-about-mobile-link:active,
+        a.gcs-about-mobile-link:active,
+        .gcs-about-mobile-link:focus,
+        a.gcs-about-mobile-link:focus {
+            color: #ffffff !important;
+            background: transparent !important;
+            outline: none !important;
+            text-decoration: none !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-mobile-link,
+        .gcs-about-header.scrolled a.gcs-about-mobile-link,
+        .gcs-about-header.scrolled .gcs-about-mobile-menu .gcs-about-mobile-link,
+        .gcs-about-header.scrolled .gcs-about-mobile-menu a.gcs-about-mobile-link {
             color: #003D7A !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-mobile-link:hover,
+        .gcs-about-header.scrolled a.gcs-about-mobile-link:hover {
+            color: #0066CC !important;
         }
 
         .gcs-about-btn-full {
