@@ -1185,6 +1185,39 @@ function gcs_contact_page_shortcode() {
 
 add_shortcode('gcs_contact_page', 'gcs_contact_page_shortcode');
 
+// Remove Hostinger tracking/signatures from emails
+add_filter('wp_mail', 'gcs_remove_hostinger_tracking', 10, 1);
+
+function gcs_remove_hostinger_tracking($args) {
+    // Remove any Hostinger mail tracking links from message body
+    if (isset($args['message'])) {
+        // Remove Hostinger tracking links
+        $args['message'] = preg_replace('/https?:\/\/mail\.hostinger\.com[^\s]*/i', '', $args['message']);
+        // Remove any Hostinger signatures
+        $args['message'] = preg_replace('/--\s*Sent via Hostinger.*/is', '', $args['message']);
+        $args['message'] = preg_replace('/This email was sent using Hostinger.*/is', '', $args['message']);
+    }
+
+    // Set Return-Path to prevent Hostinger from modifying it
+    if (isset($args['headers'])) {
+        if (is_array($args['headers'])) {
+            // Ensure Return-Path is set
+            $has_return_path = false;
+            foreach ($args['headers'] as $header) {
+                if (stripos($header, 'Return-Path:') === 0) {
+                    $has_return_path = true;
+                    break;
+                }
+            }
+            if (!$has_return_path) {
+                $args['headers'][] = 'Return-Path: wordpress@' . parse_url(home_url(), PHP_URL_HOST);
+            }
+        }
+    }
+
+    return $args;
+}
+
 // AJAX handler for contact form
 add_action('wp_ajax_gcs_contact_form', 'gcs_contact_form_handler');
 add_action('wp_ajax_nopriv_gcs_contact_form', 'gcs_contact_form_handler');
@@ -1229,9 +1262,11 @@ function gcs_contact_form_handler() {
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
         'From: Global Credit Solutions <' . $from_email . '>',
+        'Return-Path: ' . $from_email,
         'X-Mailer: PHP/' . phpversion(),
         'X-Priority: 3',
         'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
+        'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
     );
 
     // Add Reply-To with customer email if provided
