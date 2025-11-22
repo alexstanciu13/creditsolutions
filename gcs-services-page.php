@@ -543,67 +543,22 @@ function gcs_services_page_shortcode() {
             }
         }
 
-        /* Nav links - AGGRESSIVE ISOLATION - white initially, gray when scrolled */
-        .gcs-services-nav-link,
-        a.gcs-services-nav-link,
-        .gcs-services-nav-desktop .gcs-services-nav-link,
-        .gcs-services-nav-desktop a.gcs-services-nav-link,
-        .gcs-services-header .gcs-services-nav-link,
-        .gcs-services-header a.gcs-services-nav-link {
-            font-size: 1rem !important;
-            font-weight: 500 !important;
+        /* transition-colors hover:text-[#0066CC] text-white / text-gray-700 */
+        .gcs-services-nav-link {
             transition-property: color !important;
             transition-duration: 150ms !important;
-            color: #ffffff !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            background: transparent !important;
-            border: none !important;
-            outline: none !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: #ffffff !important; /* text-white when not scrolled */
             text-decoration: none !important;
-            cursor: pointer !important;
+            font-size: 1rem !important;
         }
 
-        .gcs-services-header.scrolled .gcs-services-nav-link,
-        .gcs-services-header.scrolled a.gcs-services-nav-link,
-        .gcs-services-header.scrolled .gcs-services-nav-desktop .gcs-services-nav-link,
-        .gcs-services-header.scrolled .gcs-services-nav-desktop a.gcs-services-nav-link {
-            color: #374151 !important;
-        }
-
-        .gcs-services-nav-link:hover,
-        a.gcs-services-nav-link:hover,
-        .gcs-services-nav-desktop .gcs-services-nav-link:hover,
-        .gcs-services-nav-desktop a.gcs-services-nav-link:hover,
-        .gcs-services-nav-link.active,
-        a.gcs-services-nav-link.active {
+        .gcs-services-nav-link:hover {
             color: #0066CC !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            background: transparent !important;
-            text-decoration: none !important;
         }
 
-        /* Force white on visited/active/focus when not scrolled */
-        .gcs-services-nav-link:visited,
-        .gcs-services-nav-link:active,
-        .gcs-services-nav-link:focus,
-        a.gcs-services-nav-link:visited,
-        a.gcs-services-nav-link:active,
-        a.gcs-services-nav-link:focus {
-            color: #ffffff !important;
-            background: transparent !important;
-            outline: none !important;
-        }
-
-        /* When scrolled, visited/active/focus should be gray */
-        .gcs-services-header.scrolled .gcs-services-nav-link:visited,
-        .gcs-services-header.scrolled .gcs-services-nav-link:active,
-        .gcs-services-header.scrolled .gcs-services-nav-link:focus,
-        .gcs-services-header.scrolled a.gcs-services-nav-link:visited,
-        .gcs-services-header.scrolled a.gcs-services-nav-link:active,
-        .gcs-services-header.scrolled a.gcs-services-nav-link:focus {
-            color: #374151 !important;
+        .gcs-services-header.scrolled .gcs-services-nav-link {
+            color: #374151 !important; /* text-gray-700 when scrolled */
         }
 
         /* CTA Button Desktop */
@@ -664,13 +619,12 @@ function gcs_services_page_shortcode() {
             }
         }
 
+        /* w-6 h-6 */
         .gcs-services-menu-icon,
         .gcs-services-close-icon {
             width: 1.5rem !important;
             height: 1.5rem !important;
             color: #ffffff !important;
-            stroke: currentColor !important;
-            fill: none !important;
             transition-property: color !important;
             transition-duration: 300ms !important;
         }
@@ -696,7 +650,7 @@ function gcs_services_page_shortcode() {
             display: block !important;
         }
 
-        /* Mobile Menu */
+        /* md:hidden mt-4 pb-4 flex flex-col gap-4 bg-white rounded-lg shadow-lg p-4 */
         .gcs-services-mobile-menu {
             display: none !important;
         }
@@ -704,13 +658,13 @@ function gcs_services_page_shortcode() {
         .gcs-services-mobile-menu.open {
             display: flex !important;
             flex-direction: column !important;
-            gap: 1rem !important;
-            margin-top: 1rem !important;
-            padding: 1rem !important;
-            padding-bottom: 1rem !important;
+            gap: 1rem !important; /* gap-4 */
+            margin-top: 1rem !important; /* mt-4 */
+            padding: 1rem !important; /* p-4 */
+            padding-bottom: 1rem !important; /* pb-4 */
             background-color: #ffffff !important;
-            border-radius: 0.5rem !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            border-radius: 0.5rem !important; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* shadow-lg */
         }
 
         @media (min-width: 768px) {
@@ -719,47 +673,19 @@ function gcs_services_page_shortcode() {
             }
         }
 
-        /* Mobile links - AGGRESSIVE ISOLATION - match homepage exactly */
-        .gcs-services-mobile-link,
-        a.gcs-services-mobile-link,
-        .gcs-services-mobile-menu .gcs-services-mobile-link,
-        .gcs-services-mobile-menu a.gcs-services-mobile-link,
-        .gcs-services-header .gcs-services-mobile-link,
-        .gcs-services-header a.gcs-services-mobile-link {
-            color: #374151 !important;
-            font-size: 1rem !important;
-            font-weight: 500 !important;
-            padding: 0.5rem 0 !important;
-            cursor: pointer !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            background: transparent !important;
-            border: none !important;
-            outline: none !important;
+        /* text-gray-700 hover:text-[#0066CC] text-left */
+        .gcs-services-mobile-link {
+            color: #374151 !important; /* text-gray-700 */
             text-decoration: none !important;
             text-align: left !important;
+            font-size: 1rem !important;
+            padding: 0.5rem 0 !important;
             transition-property: color !important;
             transition-duration: 150ms !important;
         }
 
-        .gcs-services-mobile-link:hover,
-        a.gcs-services-mobile-link:hover {
+        .gcs-services-mobile-link:hover {
             color: #0066CC !important;
-            background: transparent !important;
-            outline: none !important;
-            text-decoration: none !important;
-        }
-
-        .gcs-services-mobile-link:visited,
-        a.gcs-services-mobile-link:visited,
-        .gcs-services-mobile-link:active,
-        a.gcs-services-mobile-link:active,
-        .gcs-services-mobile-link:focus,
-        a.gcs-services-mobile-link:focus {
-            color: #374151 !important;
-            background: transparent !important;
-            outline: none !important;
-            text-decoration: none !important;
         }
 
         .gcs-services-btn-full {
