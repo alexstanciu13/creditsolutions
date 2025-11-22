@@ -16,30 +16,57 @@ function gcs_about_page_shortcode() {
     <div class="gcs-about-wrapper">
 
         <!-- ==================== HEADER ==================== -->
-        <!-- Fixed header with scroll effect -->
-        <header class="gcs-about-header" id="gcs-about-header">
+        <!-- Fixed header with scroll effect - same as homepage -->
+        <header class="gcs-about-header">
             <div class="gcs-about-header-container">
                 <div class="gcs-about-header-content">
                     <!-- Logo -->
-                    <a href="/" class="gcs-about-logo-btn">
+                    <a href="<?php echo home_url(); ?>" class="gcs-about-logo-btn">
                         <div class="gcs-about-logo-circle">
                             <svg class="gcs-about-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" x2="22" y1="12" y2="12"></line>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
                                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                             </svg>
                         </div>
-                        <span class="gcs-about-logo-text">Global Credit Solutions</span>
+                        <div class="gcs-about-logo-text">Global Credit Solutions</div>
                     </a>
 
-                    <!-- Navigation -->
-                    <nav class="gcs-about-nav">
-                        <a href="/" class="gcs-about-nav-link">Acasă</a>
-                        <a href="/despre" class="gcs-about-nav-link active">Despre Noi</a>
-                        <a href="/servicii" class="gcs-about-nav-link">Servicii</a>
-                        <a href="/contact" class="gcs-about-nav-link">Contact</a>
+                    <!-- Desktop Navigation -->
+                    <nav class="gcs-about-nav-desktop">
+                        <a href="<?php echo home_url(); ?>" class="gcs-about-nav-link">Acasă</a>
+                        <a href="<?php echo home_url('/despre'); ?>" class="gcs-about-nav-link active">Despre Noi</a>
+                        <a href="<?php echo home_url('/servicii'); ?>" class="gcs-about-nav-link">Servicii</a>
+                        <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-nav-link">Contact</a>
                     </nav>
+
+                    <!-- CTA Button Desktop -->
+                    <div class="gcs-about-cta-wrapper">
+                        <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-btn-primary">Aplică Acum</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="gcs-about-mobile-toggle" aria-label="Toggle menu">
+                        <svg class="gcs-about-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        <svg class="gcs-about-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
+
+                <!-- Mobile Menu -->
+                <nav class="gcs-about-mobile-menu">
+                    <a href="<?php echo home_url(); ?>" class="gcs-about-mobile-link">Acasă</a>
+                    <a href="<?php echo home_url('/despre'); ?>" class="gcs-about-mobile-link">Despre Noi</a>
+                    <a href="<?php echo home_url('/servicii'); ?>" class="gcs-about-mobile-link">Servicii</a>
+                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-mobile-link">Contact</a>
+                    <a href="<?php echo home_url('/contact'); ?>" class="gcs-about-btn-primary gcs-about-btn-full">Aplică Acum</a>
+                </nav>
             </div>
         </header>
 
@@ -406,16 +433,26 @@ function gcs_about_page_shortcode() {
         }
 
         /* ==================== HEADER ==================== */
+        /* Same as homepage header - transparent initially, white when scrolled */
         .gcs-about-header {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             right: 0 !important;
             z-index: 50 !important;
-            background-color: #ffffff !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+            transition-property: all !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            background-color: transparent !important;
             padding-top: 1rem !important;
             padding-bottom: 1rem !important;
+        }
+
+        .gcs-about-header.scrolled {
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
         }
 
         .gcs-about-header-container {
@@ -438,9 +475,11 @@ function gcs_about_page_shortcode() {
             display: flex !important;
             align-items: center !important;
             gap: 0.5rem !important;
+            text-decoration: none !important;
             cursor: pointer !important;
         }
 
+        /* Logo circle - white initially, #003D7A when scrolled */
         .gcs-about-logo-circle {
             display: flex !important;
             align-items: center !important;
@@ -448,23 +487,46 @@ function gcs_about_page_shortcode() {
             width: 2.5rem !important;
             height: 2.5rem !important;
             border-radius: 50% !important;
-            background-color: #003D7A !important;
+            background-color: #ffffff !important;
+            transition-property: background-color !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             flex-shrink: 0 !important;
         }
 
+        .gcs-about-header.scrolled .gcs-about-logo-circle {
+            background-color: #003D7A !important;
+        }
+
+        /* Logo icon - #003D7A initially, white when scrolled */
         .gcs-about-logo-icon {
             width: 1.5rem !important;
             height: 1.5rem !important;
-            color: #ffffff !important;
+            color: #003D7A !important;
+            transition-property: color !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             stroke: currentColor !important;
             fill: none !important;
         }
 
+        .gcs-about-header.scrolled .gcs-about-logo-icon {
+            color: #ffffff !important;
+        }
+
+        /* Logo text - white initially, #003D7A when scrolled */
         .gcs-about-logo-text {
-            color: #003D7A !important;
-            font-size: 1.125rem !important;
-            font-weight: 600 !important;
+            transition-property: color !important;
+            transition-duration: 300ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: #ffffff !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
             display: none !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-logo-text {
+            color: #003D7A !important;
         }
 
         @media (min-width: 768px) {
@@ -473,23 +535,160 @@ function gcs_about_page_shortcode() {
             }
         }
 
-        /* Navigation */
-        .gcs-about-nav {
-            display: flex !important;
-            gap: 2rem !important;
+        /* Desktop Navigation */
+        .gcs-about-nav-desktop {
+            display: none !important;
         }
 
+        @media (min-width: 768px) {
+            .gcs-about-nav-desktop {
+                display: flex !important;
+                align-items: center !important;
+                gap: 2rem !important;
+            }
+        }
+
+        /* Nav links - white initially, gray when scrolled */
         .gcs-about-nav-link {
-            color: #4b5563 !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
-            transition: color 0.15s !important;
+            transition-property: color !important;
+            transition-duration: 150ms !important;
+            color: #ffffff !important;
             cursor: pointer !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-nav-link {
+            color: #4b5563 !important;
         }
 
         .gcs-about-nav-link:hover,
         .gcs-about-nav-link.active {
+            color: #0066CC !important;
+        }
+
+        /* CTA Button Desktop */
+        .gcs-about-cta-wrapper {
+            display: none !important;
+        }
+
+        @media (min-width: 768px) {
+            .gcs-about-cta-wrapper {
+                display: block !important;
+            }
+        }
+
+        .gcs-about-btn-primary,
+        a.gcs-about-btn-primary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            height: 2.5rem !important;
+            padding: 0.5rem 1.5rem !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            background-color: #0066CC !important;
+            background-image: none !important;
+            background: #0066CC !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 0.5rem !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
+            transition: background-color 0.15s !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
+        .gcs-about-btn-primary:hover,
+        a.gcs-about-btn-primary:hover {
+            background-color: #0052A3 !important;
+            background-image: none !important;
+            background: #0052A3 !important;
+        }
+
+        /* Mobile Menu Button */
+        .gcs-about-mobile-toggle {
+            display: block !important;
+            width: 2rem !important;
+            height: 2rem !important;
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            position: relative !important;
+        }
+
+        @media (min-width: 768px) {
+            .gcs-about-mobile-toggle {
+                display: none !important;
+            }
+        }
+
+        .gcs-about-menu-icon,
+        .gcs-about-close-icon {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            color: #ffffff !important;
+            stroke: currentColor !important;
+            fill: none !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            transition: color 0.15s !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-menu-icon,
+        .gcs-about-header.scrolled .gcs-about-close-icon {
             color: #003D7A !important;
+        }
+
+        .gcs-about-close-icon {
+            display: none !important;
+        }
+
+        .gcs-about-mobile-toggle.active .gcs-about-menu-icon {
+            display: none !important;
+        }
+
+        .gcs-about-mobile-toggle.active .gcs-about-close-icon {
+            display: block !important;
+        }
+
+        /* Mobile Menu */
+        .gcs-about-mobile-menu {
+            display: none !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .gcs-about-mobile-menu.open {
+            display: flex !important;
+        }
+
+        @media (min-width: 768px) {
+            .gcs-about-mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .gcs-about-mobile-link {
+            color: #ffffff !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            padding: 0.5rem !important;
+            cursor: pointer !important;
+        }
+
+        .gcs-about-header.scrolled .gcs-about-mobile-link {
+            color: #003D7A !important;
+        }
+
+        .gcs-about-btn-full {
+            width: 100% !important;
         }
 
         /* ==================== HERO SECTION ==================== */
@@ -988,17 +1187,43 @@ function gcs_about_page_shortcode() {
 
     <script>
         (function() {
-            // Header scroll effect
-            const header = document.getElementById('gcs-about-header');
+            // Header scroll effect - same as homepage
+            const header = document.querySelector('.gcs-about-header');
+            const mobileToggle = document.querySelector('.gcs-about-mobile-toggle');
+            const mobileMenu = document.querySelector('.gcs-about-mobile-menu');
+
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            // Initialize scroll effect
             if (header) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 50) {
-                        header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-                    } else {
-                        header.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
-                    }
+                window.addEventListener('scroll', handleScroll);
+                handleScroll(); // Call once on load
+            }
+
+            // Mobile menu toggle
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileToggle.classList.toggle('active');
+                    mobileMenu.classList.toggle('open');
                 });
             }
+
+            // Close mobile menu when link clicked
+            const mobileLinks = document.querySelectorAll('.gcs-about-mobile-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (mobileToggle && mobileMenu) {
+                        mobileToggle.classList.remove('active');
+                        mobileMenu.classList.remove('open');
+                    }
+                });
+            });
         })();
     </script>
 
