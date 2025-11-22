@@ -231,7 +231,22 @@ function gcs_faq_cta_shortcode() {
         /* Remove all link styles */
         .gcs-faq-cta-wrapper a {
             background-color: transparent !important;
+            background-image: none !important;
+            background: transparent !important;
             text-decoration: none !important;
+            color: inherit !important;
+            border: none !important;
+            outline: none !important;
+        }
+
+        .gcs-faq-cta-wrapper a:hover,
+        .gcs-faq-cta-wrapper a:active,
+        .gcs-faq-cta-wrapper a:focus,
+        .gcs-faq-cta-wrapper a:visited {
+            background-image: none !important;
+            text-decoration: none !important;
+            outline: none !important;
+            border: none !important;
         }
 
         /* Remove list styles */
@@ -343,8 +358,10 @@ function gcs_faq_cta_shortcode() {
             background-color: #ffffff !important; /* bg-white */
             border-radius: 0.5rem !important; /* rounded-lg */
             border: 1px solid #e5e7eb !important; /* border-gray-200 */
-            padding-left: 1.5rem !important; /* px-6 */
-            padding-right: 1.5rem !important;
+            padding-left: 2rem !important; /* px-8 - increased */
+            padding-right: 2rem !important;
+            padding-top: 0.5rem !important; /* py-2 - increased */
+            padding-bottom: 0.5rem !important;
             overflow: hidden !important;
         }
 
@@ -355,8 +372,8 @@ function gcs_faq_cta_shortcode() {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            padding-top: 1rem !important; /* py-4 */
-            padding-bottom: 1rem !important;
+            padding-top: 1.25rem !important; /* py-5 - increased */
+            padding-bottom: 1.25rem !important;
             text-align: left !important;
             color: #003D7A !important; /* text-[#003D7A] */
             cursor: pointer !important;
@@ -409,7 +426,8 @@ function gcs_faq_cta_shortcode() {
         /* Answer: text-gray-600 */
         .gcs-faq-answer {
             color: #4b5563 !important; /* text-gray-600 */
-            padding-bottom: 1rem !important; /* pb-4 */
+            padding-top: 0.5rem !important; /* pt-2 - added */
+            padding-bottom: 1.5rem !important; /* pb-6 - increased */
             font-size: 0.875rem !important;
             line-height: 1.5rem !important;
         }
@@ -435,7 +453,13 @@ function gcs_faq_cta_shortcode() {
             align-items: center !important;
             gap: 0.5rem !important; /* gap-2 */
             color: #0066CC !important; /* text-[#0066CC] */
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            border: none !important;
+            outline: none !important;
             cursor: pointer !important;
+            text-decoration: none !important;
             transition-property: text-decoration !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
@@ -445,6 +469,17 @@ function gcs_faq_cta_shortcode() {
 
         .gcs-faq-contact-link:hover {
             text-decoration: underline !important; /* hover:underline */
+            color: #0066CC !important;
+            background: transparent !important;
+        }
+
+        .gcs-faq-contact-link:active,
+        .gcs-faq-contact-link:focus,
+        .gcs-faq-contact-link:visited {
+            color: #0066CC !important;
+            background: transparent !important;
+            outline: none !important;
+            border: none !important;
         }
 
         /* Arrow icon: w-4 h-4 */
@@ -549,10 +584,18 @@ function gcs_faq_cta_shortcode() {
             font-size: 0.875rem !important;
             font-weight: 500 !important;
             background-color: #ffffff !important; /* bg-white */
+            background-image: none !important; /* Remove any gradient */
+            background: #ffffff !important; /* Force solid white */
             color: #003D7A !important; /* text-[#003D7A] */
+            border: none !important; /* Remove border */
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
             border-radius: 0.5rem !important; /* rounded-lg */
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important; /* shadow-xl */
             cursor: pointer !important;
+            text-decoration: none !important;
+            outline: none !important;
             transition-property: all !important; /* transition-all */
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
@@ -560,7 +603,21 @@ function gcs_faq_cta_shortcode() {
 
         .gcs-cta-button:hover {
             background-color: #f3f4f6 !important; /* hover:bg-gray-100 */
+            background-image: none !important;
+            background: #f3f4f6 !important; /* Force solid gray */
+            color: #003D7A !important;
             transform: scale(1.05) !important; /* hover:scale-105 */
+        }
+
+        .gcs-cta-button:active,
+        .gcs-cta-button:focus,
+        .gcs-cta-button:visited {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            background: #ffffff !important;
+            color: #003D7A !important;
+            outline: none !important;
+            border: none !important;
         }
 
         /* ==================== CTA FEATURES ==================== */
