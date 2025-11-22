@@ -26,8 +26,10 @@ function gcs_contact_form_shortcode() {
             $message = sanitize_textarea_field($_POST['gcs_message']);
 
             // Validate required fields
-            if (empty($name) || empty($cnp) || empty($credit_type)) {
+            if (empty($name) || empty($cnp) || empty($email) || empty($credit_type)) {
                 $error_message = 'Vă rugăm completați toate câmpurile obligatorii.';
+            } elseif (!is_email($email)) {
+                $error_message = 'Vă rugăm introduceți o adresă de email validă.';
             } else {
                 // Prepare email
                 $to = 'contact@creditsolutions.ro';
@@ -42,11 +44,10 @@ function gcs_contact_form_shortcode() {
                 $email_body .= "---\n";
                 $email_body .= "Trimis de pe " . home_url();
 
-                $headers = array('Content-Type: text/plain; charset=UTF-8');
-
-                if (!empty($email) && is_email($email)) {
-                    $headers[] = 'Reply-To: ' . $email;
-                }
+                $headers = array(
+                    'Content-Type: text/plain; charset=UTF-8',
+                    'Reply-To: ' . $email
+                );
 
                 // Send email
                 if (wp_mail($to, $subject, $email_body, $headers)) {
@@ -145,12 +146,13 @@ function gcs_contact_form_shortcode() {
 
                             <!-- Email field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-email" class="gcs-cf-label">Email</label>
+                                <label for="gcs-email" class="gcs-cf-label">Email *</label>
                                 <input
                                     type="email"
                                     id="gcs-email"
                                     name="gcs_email"
                                     placeholder="ion@example.com"
+                                    required
                                     class="gcs-cf-input"
                                     value="<?php echo isset($_POST['gcs_email']) ? esc_attr($_POST['gcs_email']) : ''; ?>"
                                 />
