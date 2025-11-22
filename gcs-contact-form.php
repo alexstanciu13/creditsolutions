@@ -12,75 +12,6 @@
  */
 
 function gcs_contact_form_shortcode() {
-    $success_message = '';
-    $error_message = '';
-
-    // Handle form submission
-    if (isset($_POST['gcs_contact_submit']) && isset($_POST['gcs_contact_nonce'])) {
-        if (wp_verify_nonce($_POST['gcs_contact_nonce'], 'gcs_contact_form')) {
-            // Sanitize inputs
-            $name = sanitize_text_field($_POST['gcs_name']);
-            $cnp = sanitize_text_field($_POST['gcs_cnp']);
-            $email = sanitize_email($_POST['gcs_email']);
-            $credit_type = sanitize_text_field($_POST['gcs_credit_type']);
-            $message = sanitize_textarea_field($_POST['gcs_message']);
-
-            // Validate required fields
-            if (empty($name) || empty($cnp) || empty($credit_type)) {
-                $error_message = 'Vă rugăm completați toate câmpurile obligatorii.';
-            } elseif (!empty($email) && !is_email($email)) {
-                $error_message = 'Vă rugăm introduceți o adresă de email validă.';
-            } else {
-                // Prepare email
-                $to = 'contact@creditsolutions.ro';
-                $domain = parse_url(home_url(), PHP_URL_HOST);
-                $from_email = 'wordpress@' . $domain;
-
-                // Subject line with clear identifier
-                $subject = '[Contact Form] ' . $credit_type . ' - ' . $name;
-
-                // Email body with clear formatting
-                $email_body = "Formular de contact - Global Credit Solutions\n";
-                $email_body .= "==========================================\n\n";
-                $email_body .= "Nume complet: {$name}\n";
-                $email_body .= "CNP/CUI: {$cnp}\n";
-                $email_body .= "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat') . "\n";
-                $email_body .= "Tip Credit: {$credit_type}\n";
-                $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
-                $email_body .= "Mesaj:\n";
-                $email_body .= "==========================================\n";
-                $email_body .= $message . "\n";
-                $email_body .= "==========================================\n\n";
-                $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
-
-                // Improved headers to avoid spam filters
-                $headers = array(
-                    'Content-Type: text/plain; charset=UTF-8',
-                    'From: Global Credit Solutions <' . $from_email . '>',
-                    'Return-Path: ' . $from_email,
-                    'X-Mailer: PHP/' . phpversion(),
-                    'X-Priority: 3',
-                    'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
-                    'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
-                );
-
-                // Add Reply-To with customer email if provided
-                if (!empty($email)) {
-                    $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
-                }
-
-                // Send email
-                if (wp_mail($to, $subject, $email_body, $headers)) {
-                    $success_message = 'Formularul a fost trimis cu succes! Vă vom contacta în curând.';
-                } else {
-                    $error_message = 'A apărut o eroare la trimiterea formularului. Vă rugăm încercați din nou.';
-                }
-            }
-        } else {
-            $error_message = 'Eroare de securitate. Vă rugăm reîncărcați pagina și încercați din nou.';
-        }
-    }
-
     ob_start();
     ?>
 
@@ -107,88 +38,59 @@ function gcs_contact_form_shortcode() {
                             <h2 class="gcs-cf-title">Aplică pentru un Credit</h2>
                         </div>
 
-                        <?php if ($success_message): ?>
-                            <!-- Success message -->
-                            <div class="gcs-cf-success">
-                                <svg class="gcs-cf-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                                    <path d="m9 12 2 2 4-4"></path>
-                                </svg>
-                                <p><?php echo esc_html($success_message); ?></p>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ($error_message): ?>
-                            <!-- Error message -->
-                            <div class="gcs-cf-error">
-                                <svg class="gcs-cf-error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" x2="12" y1="8" y2="12"></line>
-                                    <line x1="12" x2="12.01" y1="16" y2="16"></line>
-                                </svg>
-                                <p><?php echo esc_html($error_message); ?></p>
-                            </div>
-                        <?php endif; ?>
-
                         <!-- Form: space-y-6 -->
-                        <form method="post" class="gcs-cf-form">
-                            <?php wp_nonce_field('gcs_contact_form', 'gcs_contact_nonce'); ?>
+                        <form id="gcs-homepage-contact-form" class="gcs-cf-form">
 
                             <!-- Name field -->
                             <div class="gcs-cf-field">
-                                <!-- Label -->
-                                <label for="gcs-name" class="gcs-cf-label">Nume complet *</label>
-                                <!-- Input: mt-2 -->
+                                <label for="gcs-hp-name" class="gcs-cf-label">Nume complet *</label>
                                 <input
                                     type="text"
-                                    id="gcs-name"
-                                    name="gcs_name"
+                                    id="gcs-hp-name"
+                                    name="name"
                                     placeholder="Ionescu Ion"
                                     required
                                     class="gcs-cf-input"
-                                    value="<?php echo isset($_POST['gcs_name']) ? esc_attr($_POST['gcs_name']) : ''; ?>"
                                 />
                             </div>
 
                             <!-- CNP field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-cnp" class="gcs-cf-label">CNP/CUI *</label>
+                                <label for="gcs-hp-cnp" class="gcs-cf-label">CNP/CUI *</label>
                                 <input
                                     type="text"
-                                    id="gcs-cnp"
-                                    name="gcs_cnp"
+                                    id="gcs-hp-cnp"
+                                    name="cnp"
                                     placeholder="1234567890123"
                                     required
                                     class="gcs-cf-input"
-                                    value="<?php echo isset($_POST['gcs_cnp']) ? esc_attr($_POST['gcs_cnp']) : ''; ?>"
                                 />
                             </div>
 
                             <!-- Email field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-email" class="gcs-cf-label">Email</label>
+                                <label for="gcs-hp-email" class="gcs-cf-label">Email</label>
                                 <input
                                     type="email"
-                                    id="gcs-email"
-                                    name="gcs_email"
+                                    id="gcs-hp-email"
+                                    name="email"
                                     placeholder="ion@example.com"
                                     class="gcs-cf-input"
-                                    value="<?php echo isset($_POST['gcs_email']) ? esc_attr($_POST['gcs_email']) : ''; ?>"
                                 />
                             </div>
 
                             <!-- Credit Type field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-credit-type" class="gcs-cf-label">Tipuri de credit *</label>
+                                <label for="gcs-hp-credit-type" class="gcs-cf-label">Tipuri de credit *</label>
                                 <div class="gcs-cf-select-wrapper">
-                                    <select id="gcs-credit-type" name="gcs_credit_type" required class="gcs-cf-select">
+                                    <select id="gcs-hp-credit-type" name="creditType" required class="gcs-cf-select">
                                         <option value="">Selectează tipul de credit</option>
-                                        <option value="Credite de Nevoi Personale" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Credite de Nevoi Personale') ? 'selected' : ''; ?>>Credite de Nevoi Personale</option>
-                                        <option value="Credit Ipotecar/Prima Casă" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Credit Ipotecar/Prima Casă') ? 'selected' : ''; ?>>Credit Ipotecar/Prima Casă</option>
-                                        <option value="Credite Auto/Leasing" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Credite Auto/Leasing') ? 'selected' : ''; ?>>Credite Auto/Leasing</option>
-                                        <option value="Credite/Linii de Credit pentru Persoane Juridice" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Credite/Linii de Credit pentru Persoane Juridice') ? 'selected' : ''; ?>>Credite/Linii de Credit pentru Persoane Juridice</option>
-                                        <option value="Refinanțări de Credit" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Refinanțări de Credit') ? 'selected' : ''; ?>>Refinanțări de Credit</option>
-                                        <option value="Alte Servicii" <?php echo (isset($_POST['gcs_credit_type']) && $_POST['gcs_credit_type'] === 'Alte Servicii') ? 'selected' : ''; ?>>Alte Servicii</option>
+                                        <option value="nevoi">Credite de Nevoi Personale</option>
+                                        <option value="ipotecar">Credit Ipotecar/Prima Casă</option>
+                                        <option value="auto">Credite Auto/Leasing</option>
+                                        <option value="juridic">Credite/Linii de Credit pentru Persoane Juridice</option>
+                                        <option value="refinantare">Refinanțări de Credit</option>
+                                        <option value="altele">Alte Servicii</option>
                                     </select>
                                     <svg class="gcs-cf-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                         <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -198,24 +100,24 @@ function gcs_contact_form_shortcode() {
 
                             <!-- Message field -->
                             <div class="gcs-cf-field">
-                                <label for="gcs-message" class="gcs-cf-label">Mesaj</label>
+                                <label for="gcs-hp-message" class="gcs-cf-label">Mesaj</label>
                                 <textarea
-                                    id="gcs-message"
-                                    name="gcs_message"
+                                    id="gcs-hp-message"
+                                    name="message"
                                     rows="5"
                                     placeholder="Descrie-ne nevoile tale și cum te putem ajuta..."
                                     class="gcs-cf-textarea"
-                                ><?php echo isset($_POST['gcs_message']) ? esc_textarea($_POST['gcs_message']) : ''; ?></textarea>
+                                ></textarea>
                             </div>
 
-                            <!-- Submit button: w-full bg-[#0066CC] hover:bg-[#0052A3] text-white size="lg" -->
-                            <button type="submit" name="gcs_contact_submit" class="gcs-cf-submit">
-                                <!-- mr-2 w-5 h-5 -->
+                            <!-- Submit button -->
+                            <button type="submit" class="gcs-cf-submit">
                                 <svg class="gcs-cf-submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="22" x2="11" y1="2" y2="13"></line>
                                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                                 </svg>
-                                Trimite Cererea
+                                <span class="gcs-cf-btn-text">Trimite Cererea</span>
+                                <span class="gcs-cf-btn-loading">Se trimite...</span>
                             </button>
 
                             <!-- Privacy notice: text-sm text-gray-600 text-center -->
@@ -223,6 +125,8 @@ function gcs_contact_form_shortcode() {
                                 Prin trimiterea formularului, ești de acord cu
                                 <a href="/gdpr" class="gcs-cf-privacy-link">Politica de Confidențialitate</a>
                             </p>
+
+                            <div class="gcs-cf-form-message"></div>
                         </form>
                     </div>
                 </div>
@@ -611,6 +515,50 @@ function gcs_contact_form_shortcode() {
             fill: none !important;
         }
 
+        .gcs-cf-btn-text {
+            display: inline !important;
+        }
+
+        .gcs-cf-btn-loading {
+            display: none !important;
+        }
+
+        .gcs-cf-submit.loading .gcs-cf-btn-text {
+            display: none !important;
+        }
+
+        .gcs-cf-submit.loading .gcs-cf-btn-loading {
+            display: inline !important;
+        }
+
+        .gcs-cf-submit:disabled {
+            opacity: 0.6 !important;
+            cursor: not-allowed !important;
+        }
+
+        /* ==================== FORM MESSAGE ==================== */
+        .gcs-cf-form-message {
+            padding: 1rem !important;
+            border-radius: 0.375rem !important;
+            font-size: 0.875rem !important;
+            line-height: 1.25rem !important;
+            display: none !important;
+        }
+
+        .gcs-cf-form-message.success {
+            display: block !important;
+            background-color: #dcfce7 !important;
+            color: #166534 !important;
+            border: 1px solid #86efac !important;
+        }
+
+        .gcs-cf-form-message.error {
+            display: block !important;
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+            border: 1px solid #fca5a5 !important;
+        }
+
         /* ==================== PRIVACY ==================== */
         /* text-sm text-gray-600 text-center */
         .gcs-cf-privacy {
@@ -635,8 +583,146 @@ function gcs_contact_form_shortcode() {
         }
     </style>
 
+    <script>
+        (function() {
+            if (window.gcsHomepageContactFormInit) return;
+            window.gcsHomepageContactFormInit = true;
+
+            const form = document.getElementById('gcs-homepage-contact-form');
+            if (!form) return;
+
+            const submitBtn = form.querySelector('.gcs-cf-submit');
+            const messageDiv = form.querySelector('.gcs-cf-form-message');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Show loading state
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                messageDiv.classList.remove('success', 'error');
+                messageDiv.style.display = 'none';
+
+                // Get form data
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    cnp: formData.get('cnp'),
+                    email: formData.get('email'),
+                    creditType: formData.get('creditType'),
+                    message: formData.get('message')
+                };
+
+                // Send to WordPress AJAX handler
+                fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        action: 'gcs_homepage_contact_form',
+                        ...data
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+
+                    if (result.success) {
+                        messageDiv.textContent = result.data.message || 'Formularul a fost trimis cu succes! Vă vom contacta în curând.';
+                        messageDiv.classList.add('success');
+                        messageDiv.style.display = 'block';
+                        form.reset();
+                    } else {
+                        messageDiv.textContent = result.data.message || 'A apărut o eroare. Vă rugăm să încercați din nou.';
+                        messageDiv.classList.add('error');
+                        messageDiv.style.display = 'block';
+                    }
+
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    messageDiv.textContent = 'A apărut o eroare. Vă rugăm să încercați din nou sau să ne contactați telefonic.';
+                    messageDiv.classList.add('error');
+                    messageDiv.style.display = 'block';
+                });
+            });
+        })();
+    </script>
+
     <?php
     return ob_get_clean();
 }
 
 add_shortcode('gcs_contact_form', 'gcs_contact_form_shortcode');
+
+// AJAX handler for homepage contact form
+add_action('wp_ajax_gcs_homepage_contact_form', 'gcs_homepage_contact_form_handler');
+add_action('wp_ajax_nopriv_gcs_homepage_contact_form', 'gcs_homepage_contact_form_handler');
+
+function gcs_homepage_contact_form_handler() {
+    // Sanitize inputs
+    $name = sanitize_text_field($_POST['name']);
+    $cnp = sanitize_text_field($_POST['cnp']);
+    $email = sanitize_email($_POST['email']);
+    $creditType = sanitize_text_field($_POST['creditType']);
+    $message = sanitize_textarea_field($_POST['message']);
+
+    // Validate email if provided
+    if (!empty($email) && !is_email($email)) {
+        wp_send_json_error(['message' => 'Adresa de email nu este validă.']);
+        return;
+    }
+
+    // Prepare email
+    $to = 'contact@creditsolutions.ro';
+    $domain = parse_url(home_url(), PHP_URL_HOST);
+    $from_email = 'wordpress@' . $domain;
+
+    // Subject line with clear identifier
+    $email_subject = '[Contact Form] ' . $creditType . ' - ' . $name;
+
+    // Email body with clear formatting
+    $email_body = "Formular de contact - Global Credit Solutions\n";
+    $email_body .= "==========================================\n\n";
+    $email_body .= "Nume complet: $name\n";
+    $email_body .= "CNP/CUI: $cnp\n";
+    $email_body .= "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat') . "\n";
+    $email_body .= "Tip Credit: $creditType\n";
+    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
+    $email_body .= "Mesaj:\n";
+    $email_body .= "==========================================\n";
+    $email_body .= $message . "\n";
+    $email_body .= "==========================================\n\n";
+    $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
+
+    // Improved headers to avoid spam filters
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: Global Credit Solutions <' . $from_email . '>',
+        'Return-Path: ' . $from_email,
+        'X-Mailer: PHP/' . phpversion(),
+        'X-Priority: 3',
+        'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
+        'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
+    );
+
+    // Add Reply-To with customer email if provided
+    if (!empty($email)) {
+        $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
+    }
+
+    // Send email
+    $sent = wp_mail($to, $email_subject, $email_body, $headers);
+
+    if ($sent) {
+        wp_send_json_success(['message' => 'Formularul a fost trimis cu succes! Vă vom contacta în curând.']);
+    } else {
+        wp_send_json_error(['message' => 'A apărut o eroare la trimiterea mesajului. Vă rugăm să ne contactați telefonic.']);
+    }
+}
