@@ -428,7 +428,7 @@ function gcs_services_page_shortcode() {
         }
 
         /* ==================== HEADER ==================== */
-        /* Same as homepage header - transparent initially, white when scrolled */
+        /* fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 */
         .gcs-services-header {
             position: fixed !important;
             top: 0 !important;
@@ -439,18 +439,20 @@ function gcs_services_page_shortcode() {
             transition-duration: 300ms !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             background-color: transparent !important;
-            padding-top: 1rem !important;
+            padding-top: 1rem !important; /* py-4 */
             padding-bottom: 1rem !important;
         }
 
+        /* bg-white shadow-md py-3 */
         .gcs-services-header.scrolled {
             background-color: #ffffff !important;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-            padding-top: 0.75rem !important;
+            padding-top: 0.75rem !important; /* py-3 */
             padding-bottom: 0.75rem !important;
         }
 
-        .gcs-services-header-container {
+        /* container mx-auto px-4 */
+        .gcs-services-container {
             width: 100% !important;
             max-width: 80rem !important;
             margin-left: auto !important;
@@ -459,78 +461,71 @@ function gcs_services_page_shortcode() {
             padding-right: 1rem !important;
         }
 
+        /* flex items-center justify-between */
         .gcs-services-header-content {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
         }
 
-        /* Logo */
+        /* ==================== LOGO ==================== */
+        /* flex items-center gap-2 */
         .gcs-services-logo-btn {
             display: flex !important;
             align-items: center !important;
-            gap: 0.5rem !important;
+            gap: 0.5rem !important; /* gap-2 */
             text-decoration: none !important;
             cursor: pointer !important;
         }
 
-        /* Logo circle - white initially, #003D7A when scrolled */
+        /* w-10 h-10 rounded-full bg-white / bg-[#003D7A] */
         .gcs-services-logo-circle {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            width: 2.5rem !important;
-            height: 2.5rem !important;
-            border-radius: 50% !important;
-            background-color: #ffffff !important;
+            width: 2.5rem !important; /* w-10 */
+            height: 2.5rem !important; /* h-10 */
+            border-radius: 50% !important; /* rounded-full */
+            background-color: #ffffff !important; /* bg-white when not scrolled */
             transition-property: background-color !important;
             transition-duration: 300ms !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-            flex-shrink: 0 !important;
         }
 
         .gcs-services-header.scrolled .gcs-services-logo-circle {
-            background-color: #003D7A !important;
+            background-color: #003D7A !important; /* bg-[#003D7A] when scrolled */
         }
 
-        /* Logo icon - #003D7A initially, white when scrolled */
+        /* w-6 h-6 text-[#003D7A] / text-white */
         .gcs-services-logo-icon {
-            width: 1.5rem !important;
-            height: 1.5rem !important;
-            color: #003D7A !important;
+            width: 1.5rem !important; /* w-6 */
+            height: 1.5rem !important; /* h-6 */
+            color: #003D7A !important; /* text-[#003D7A] when not scrolled */
             transition-property: color !important;
             transition-duration: 300ms !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-            stroke: currentColor !important;
-            fill: none !important;
         }
 
         .gcs-services-header.scrolled .gcs-services-logo-icon {
-            color: #ffffff !important;
+            color: #ffffff !important; /* text-white when scrolled */
         }
 
-        /* Logo text - white initially, #003D7A when scrolled */
+        /* Logo text - transition-colors text-white / text-[#003D7A] */
         .gcs-services-logo-text {
             transition-property: color !important;
             transition-duration: 300ms !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
-            color: #ffffff !important;
+            color: #ffffff !important; /* text-white when not scrolled */
             font-size: 1rem !important;
             font-weight: 400 !important;
-            display: none !important;
         }
 
         .gcs-services-header.scrolled .gcs-services-logo-text {
-            color: #003D7A !important;
+            color: #003D7A !important; /* text-[#003D7A] when scrolled */
         }
 
-        @media (min-width: 768px) {
-            .gcs-services-logo-text {
-                display: inline !important;
-            }
-        }
-
-        /* Desktop Navigation */
+        /* ==================== NAVIGATION ==================== */
+        /* hidden md:flex items-center gap-8 */
         .gcs-services-nav-desktop {
             display: none !important;
         }
@@ -539,7 +534,7 @@ function gcs_services_page_shortcode() {
             .gcs-services-nav-desktop {
                 display: flex !important;
                 align-items: center !important;
-                gap: 2rem !important;
+                gap: 2rem !important; /* gap-8 */
             }
         }
 
@@ -561,7 +556,8 @@ function gcs_services_page_shortcode() {
             color: #374151 !important; /* text-gray-700 when scrolled */
         }
 
-        /* CTA Button Desktop */
+        /* ==================== CTA BUTTON ==================== */
+        /* hidden md:block */
         .gcs-services-cta-wrapper {
             display: none !important;
         }
@@ -572,39 +568,40 @@ function gcs_services_page_shortcode() {
             }
         }
 
-        .gcs-services-btn-primary,
-        a.gcs-services-btn-primary,
-        .gcs-services-wrapper .gcs-services-btn-primary,
-        .gcs-services-wrapper a.gcs-services-btn-primary {
+        /* bg-[#0066CC] hover:bg-[#0052A3] text-white rounded-lg */
+        .gcs-services-btn-primary {
             display: inline-flex !important;
+            height: 2.5rem !important; /* h-10 (size="lg") */
             align-items: center !important;
             justify-content: center !important;
-            height: 2.5rem !important;
-            padding: 0.5rem 1.5rem !important;
+            padding-left: 1.5rem !important; /* px-6 */
+            padding-right: 1.5rem !important;
+            padding-top: 0.5rem !important; /* py-2 */
+            padding-bottom: 0.5rem !important;
+            background-color: #0066CC !important;
+            color: #ffffff !important;
+            border-radius: 0.5rem !important; /* rounded-lg */
             font-size: 0.875rem !important;
             font-weight: 500 !important;
-            background-color: #0066CC !important;
-            background-image: none !important;
-            background: #0066CC !important;
-            color: #ffffff !important;
-            border: none !important;
-            border-radius: 0.5rem !important;
-            cursor: pointer !important;
             text-decoration: none !important;
-            transition: background-color 0.15s !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
+            transition-property: all !important;
+            transition-duration: 150ms !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border: none !important;
+            cursor: pointer !important;
         }
 
-        .gcs-services-btn-primary:hover,
-        a.gcs-services-btn-primary:hover {
+        .gcs-services-btn-primary:hover {
             background-color: #0052A3 !important;
-            background-image: none !important;
-            background: #0052A3 !important;
         }
 
-        /* Mobile Menu Button */
+        /* w-full */
+        .gcs-services-btn-full {
+            width: 100% !important;
+        }
+
+        /* ==================== MOBILE MENU ==================== */
+        /* md:hidden */
         .gcs-services-mobile-toggle {
             display: flex !important;
             background: none !important;
@@ -686,10 +683,6 @@ function gcs_services_page_shortcode() {
 
         .gcs-services-mobile-link:hover {
             color: #0066CC !important;
-        }
-
-        .gcs-services-btn-full {
-            width: 100% !important;
         }
 
         /* ==================== HERO SECTION ==================== */
@@ -1145,11 +1138,14 @@ function gcs_services_page_shortcode() {
 
     <script>
         (function() {
-            // Header scroll effect - same as homepage
+            if (window.gcsServicesInit) return;
+            window.gcsServicesInit = true;
+
             const header = document.querySelector('.gcs-services-header');
             const mobileToggle = document.querySelector('.gcs-services-mobile-toggle');
             const mobileMenu = document.querySelector('.gcs-services-mobile-menu');
 
+            // Header scroll effect
             function handleScroll() {
                 if (window.scrollY > 20) {
                     header.classList.add('scrolled');
@@ -1158,14 +1154,11 @@ function gcs_services_page_shortcode() {
                 }
             }
 
-            // Initialize scroll effect
-            if (header) {
-                window.addEventListener('scroll', handleScroll);
-                handleScroll(); // Call once on load
-            }
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
 
             // Mobile menu toggle
-            if (mobileToggle && mobileMenu) {
+            if (mobileToggle) {
                 mobileToggle.addEventListener('click', function() {
                     mobileToggle.classList.toggle('active');
                     mobileMenu.classList.toggle('open');
@@ -1174,14 +1167,73 @@ function gcs_services_page_shortcode() {
 
             // Close mobile menu when link clicked
             const mobileLinks = document.querySelectorAll('.gcs-services-mobile-link');
-            mobileLinks.forEach(function(link) {
+            mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (mobileToggle && mobileMenu) {
-                        mobileToggle.classList.remove('active');
-                        mobileMenu.classList.remove('open');
-                    }
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('open');
                 });
             });
+
+            // Close on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                }
+            });
+
+            // Calculator
+            const creditType = document.getElementById('gcs-credit-type');
+            const amount = document.getElementById('gcs-amount');
+            const period = document.getElementById('gcs-period');
+            const amountVal = document.getElementById('gcs-amount-value');
+            const periodVal = document.getElementById('gcs-period-value');
+            const monthly = document.getElementById('gcs-monthly');
+            const dae = document.getElementById('gcs-dae');
+
+            const rates = {
+                nevoi: 0.085,
+                ipotecar: 0.065,
+                auto: 0.075,
+                juridice: 0.07,
+                refinantare: 0.06,
+                altele: 0.08
+            };
+
+            function formatNum(n) {
+                return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            }
+
+            function calcPayment(p, r, m) {
+                const mr = r / 12;
+                return (p * mr * Math.pow(1 + mr, m)) / (Math.pow(1 + mr, m) - 1);
+            }
+
+            function calcDAE(r) {
+                return ((r + 0.015) * 100).toFixed(2);
+            }
+
+            function update() {
+                const ct = creditType.value;
+                const a = parseInt(amount.value);
+                const p = parseInt(period.value);
+
+                amountVal.textContent = formatNum(a) + ' RON';
+                periodVal.textContent = p + ' luni (' + Math.round(p / 12) + ' ani)';
+
+                const r = rates[ct] || 0.07;
+                const pay = calcPayment(a, r, p);
+                const d = calcDAE(r);
+
+                monthly.textContent = pay.toLocaleString('ro-RO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' RON';
+                dae.textContent = d.replace('.', ',') + '%';
+            }
+
+            if (creditType) creditType.addEventListener('change', update);
+            if (amount) amount.addEventListener('input', update);
+            if (period) period.addEventListener('input', update);
+
+            update();
         })();
     </script>
 
