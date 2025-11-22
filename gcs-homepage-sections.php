@@ -597,6 +597,22 @@ function gcs_homepage_sections_shortcode() {
             box-sizing: border-box !important;
         }
 
+        /* SVG reset to prevent theme interference */
+        .gcs-hs-wrapper svg {
+            display: inline-block !important;
+            vertical-align: middle !important;
+            overflow: visible !important;
+        }
+
+        .gcs-hs-wrapper svg path,
+        .gcs-hs-wrapper svg polyline,
+        .gcs-hs-wrapper svg line,
+        .gcs-hs-wrapper svg circle,
+        .gcs-hs-wrapper svg rect,
+        .gcs-hs-wrapper svg polygon {
+            vector-effect: non-scaling-stroke !important;
+        }
+
         /* Global font */
         .gcs-hs-wrapper,
         .gcs-hs-wrapper * {
@@ -1217,9 +1233,9 @@ function gcs_homepage_sections_shortcode() {
             border-radius: 50% !important; /* rounded-full */
             width: 3rem !important; /* w-12 */
             height: 3rem !important; /* h-12 */
-            border: 2px solid #d1d5db !important; /* border-2 */
+            border: 2px solid #d1d5db !important; /* border-2 (gray-300) */
             background-color: #ffffff !important;
-            color: #374151 !important;
+            color: #374151 !important; /* text-gray-700 */
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -1227,6 +1243,8 @@ function gcs_homepage_sections_shortcode() {
             transition-property: all !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            padding: 0 !important;
+            flex-shrink: 0 !important;
         }
 
         .gcs-hs-nav-btn:hover {
@@ -1235,12 +1253,28 @@ function gcs_homepage_sections_shortcode() {
             border-color: #0066CC !important;
         }
 
+        .gcs-hs-nav-btn svg {
+            pointer-events: none !important;
+        }
+
         /* w-5 h-5 */
         .gcs-hs-nav-icon {
             width: 1.25rem !important; /* w-5 */
             height: 1.25rem !important; /* h-5 */
-            color: inherit !important;
+            fill: none !important;
             stroke: currentColor !important;
+            stroke-width: 2 !important;
+            stroke-linecap: round !important;
+            stroke-linejoin: round !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+        }
+
+        .gcs-hs-nav-icon polyline,
+        .gcs-hs-nav-icon path,
+        .gcs-hs-nav-icon line {
+            stroke: inherit !important;
+            fill: none !important;
         }
 
         /* flex items-center gap-2 */
