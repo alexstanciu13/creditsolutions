@@ -555,7 +555,7 @@ function gcs_about_page_shortcode() {
         .gcs-about-nav-desktop a.gcs-about-nav-link,
         .gcs-about-header .gcs-about-nav-link,
         .gcs-about-header a.gcs-about-nav-link {
-            font-size: 0.875rem !important;
+            font-size: 1rem !important;
             font-weight: 500 !important;
             transition-property: color !important;
             transition-duration: 150ms !important;
@@ -573,7 +573,7 @@ function gcs_about_page_shortcode() {
         .gcs-about-header.scrolled a.gcs-about-nav-link,
         .gcs-about-header.scrolled .gcs-about-nav-desktop .gcs-about-nav-link,
         .gcs-about-header.scrolled .gcs-about-nav-desktop a.gcs-about-nav-link {
-            color: #4b5563 !important;
+            color: #374151 !important;
         }
 
         .gcs-about-nav-link:hover,
@@ -608,7 +608,7 @@ function gcs_about_page_shortcode() {
         .gcs-about-header.scrolled a.gcs-about-nav-link:visited,
         .gcs-about-header.scrolled a.gcs-about-nav-link:active,
         .gcs-about-header.scrolled a.gcs-about-nav-link:focus {
-            color: #4b5563 !important;
+            color: #374151 !important;
         }
 
         /* CTA Button Desktop */
@@ -719,17 +719,17 @@ function gcs_about_page_shortcode() {
             }
         }
 
-        /* Mobile links - AGGRESSIVE ISOLATION */
+        /* Mobile links - AGGRESSIVE ISOLATION - match homepage exactly */
         .gcs-about-mobile-link,
         a.gcs-about-mobile-link,
         .gcs-about-mobile-menu .gcs-about-mobile-link,
         .gcs-about-mobile-menu a.gcs-about-mobile-link,
         .gcs-about-header .gcs-about-mobile-link,
         .gcs-about-header a.gcs-about-mobile-link {
-            color: #ffffff !important;
+            color: #374151 !important;
             font-size: 1rem !important;
             font-weight: 500 !important;
-            padding: 0.5rem !important;
+            padding: 0.5rem 0 !important;
             cursor: pointer !important;
             background-color: transparent !important;
             background-image: none !important;
@@ -737,32 +737,29 @@ function gcs_about_page_shortcode() {
             border: none !important;
             outline: none !important;
             text-decoration: none !important;
+            text-align: left !important;
+            transition-property: color !important;
+            transition-duration: 150ms !important;
         }
 
         .gcs-about-mobile-link:hover,
-        a.gcs-about-mobile-link:hover,
+        a.gcs-about-mobile-link:hover {
+            color: #0066CC !important;
+            background: transparent !important;
+            outline: none !important;
+            text-decoration: none !important;
+        }
+
         .gcs-about-mobile-link:visited,
         a.gcs-about-mobile-link:visited,
         .gcs-about-mobile-link:active,
         a.gcs-about-mobile-link:active,
         .gcs-about-mobile-link:focus,
         a.gcs-about-mobile-link:focus {
-            color: #ffffff !important;
+            color: #374151 !important;
             background: transparent !important;
             outline: none !important;
             text-decoration: none !important;
-        }
-
-        .gcs-about-header.scrolled .gcs-about-mobile-link,
-        .gcs-about-header.scrolled a.gcs-about-mobile-link,
-        .gcs-about-header.scrolled .gcs-about-mobile-menu .gcs-about-mobile-link,
-        .gcs-about-header.scrolled .gcs-about-mobile-menu a.gcs-about-mobile-link {
-            color: #003D7A !important;
-        }
-
-        .gcs-about-header.scrolled .gcs-about-mobile-link:hover,
-        .gcs-about-header.scrolled a.gcs-about-mobile-link:hover {
-            color: #0066CC !important;
         }
 
         .gcs-about-btn-full {
