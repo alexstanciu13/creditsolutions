@@ -141,11 +141,11 @@ function gcs_footer_shortcode() {
                         <!-- Contact Info: space-y-3 mb-6 -->
                         <ul class="gcs-footer-contact-list">
                             <li class="gcs-footer-contact-item">
-                                <a href="tel:+40212345678" class="gcs-footer-contact-link">
+                                <a href="tel:+40743212055" class="gcs-footer-contact-link">
                                     <svg class="gcs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                                     </svg>
-                                    <span>+40 21 234 5678</span>
+                                    <span>0743212055, 0745546924</span>
                                 </a>
                             </li>
                             <li class="gcs-footer-contact-item">
@@ -215,14 +215,20 @@ function gcs_footer_shortcode() {
 
                         <!-- Legal Links: flex flex-wrap justify-center gap-6 -->
                         <div class="gcs-footer-legal">
-                            <a href="/politica-confidentialitate" class="gcs-footer-legal-link">
-                                Politică de Confidențialitate
-                            </a>
-                            <a href="/termeni-conditii" class="gcs-footer-legal-link">
+                            <a href="/termeni-si-conditii" class="gcs-footer-legal-link">
                                 Termeni și Condiții
                             </a>
                             <a href="/gdpr" class="gcs-footer-legal-link">
                                 GDPR
+                            </a>
+                            <a href="/politica-cookies" class="gcs-footer-legal-link">
+                                Politica Cookies
+                            </a>
+                            <a href="/disclaimer-legal" class="gcs-footer-legal-link">
+                                Disclaimer Legal
+                            </a>
+                            <a href="/solutionarea-plangerilor" class="gcs-footer-legal-link">
+                                Soluționarea Plângerilor
                             </a>
                         </div>
                     </div>
