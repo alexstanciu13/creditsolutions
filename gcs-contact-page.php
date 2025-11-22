@@ -208,100 +208,37 @@ function gcs_contact_page_shortcode() {
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </section>
+                        <!-- FAQ Mini Section -->
+                        <div class="gcs-contact-faq-mini">
+                            <h3 class="gcs-contact-faq-mini-title">Întrebări Frecvente</h3>
 
-        <!-- ==================== FAQ SECTION ==================== -->
-        <section class="gcs-contact-faq-section">
-            <div class="gcs-contact-container">
-                <div class="gcs-contact-section-header">
-                    <h2 class="gcs-contact-section-title">Întrebări Frecvente</h2>
-                    <p class="gcs-contact-section-subtitle">
-                        Răspunsuri rapide la cele mai frecvente întrebări despre serviciile noastre.
-                    </p>
-                </div>
+                            <div class="gcs-contact-faq-mini-item">
+                                <button class="gcs-contact-faq-mini-question">
+                                    <span>Serviciile sunt gratuite?</span>
+                                    <svg class="gcs-contact-faq-mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="gcs-contact-faq-mini-answer">
+                                    <p>Da, consultanța este 100% gratuită. Nu plătești nimic pentru serviciile noastre.</p>
+                                </div>
+                            </div>
 
-                <div class="gcs-contact-faq-container">
-                    <!-- FAQ Item 1 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Serviciile dvs. sunt gratuite?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Da, consultanța noastră este 100% gratuită pentru clienți. Noi primim comision de la instituțiile financiare partenere, deci nu vei plăti nimic pentru serviciile noastre de intermediere.</p>
+                            <div class="gcs-contact-faq-mini-item">
+                                <button class="gcs-contact-faq-mini-question">
+                                    <span>Cât durează aprobarea?</span>
+                                    <svg class="gcs-contact-faq-mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="gcs-contact-faq-mini-answer">
+                                    <p>24-48 ore pentru credite personale, 1-3 săptămâni pentru credite ipotecare.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- FAQ Item 2 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Cât durează procesul de aprobare a creditului?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Timpul de procesare variază în funcție de tipul creditului și instituția financiară. În general, pentru credite nevoi personale, răspunsul poate veni în 24-48 ore. Pentru credite ipotecare, procesul durează între 1-3 săptămâni.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 3 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Ce documente sunt necesare?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Documentele standard includ: act de identitate, adeverință de venit sau ultimele 3 extrase de cont, și pentru credite ipotecare - documente proprietate. Te vom ghida pas cu pas în pregătirea dosarului complet.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 4 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Pot obține credit dacă am istoric negativ la Biroul de Credit?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Depinde de gradul incidentelor. Colaborăm cu instituții care au politici diferite față de istoricul de credit. Vom analiza situația ta și te vom ghida către cele mai potrivite opțiuni disponibile.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 5 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Pot refinanța un credit existent?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Absolut! Refinanțarea poate reduce rata lunară, dobânda, sau poate permite consolidarea mai multor credite într-unul singur. Vom compara ofertele și te vom ajuta să economisești bani.</p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Item 6 -->
-                    <div class="gcs-contact-faq-item">
-                        <button class="gcs-contact-faq-question">
-                            <span>Cum mă pot contacta cu un consultant?</span>
-                            <svg class="gcs-contact-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="gcs-contact-faq-answer">
-                            <p>Ne poți contacta telefonic la 0743 212 055 sau 0745 546 924, prin email la contact@creditsolutions.ro, sau completând formularul de contact de pe această pagină. Răspundem rapid la toate solicitările!</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -956,91 +893,82 @@ function gcs_contact_page_shortcode() {
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
         }
 
-        /* ==================== FAQ SECTION ==================== */
-        .gcs-contact-faq-section {
-            padding-top: 4rem !important;
-            padding-bottom: 4rem !important;
-            background-color: #ffffff !important;
+        /* FAQ Mini */
+        .gcs-contact-faq-mini {
+            margin-top: 2rem !important;
         }
 
-        .gcs-contact-faq-container {
-            max-width: 48rem !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1rem !important;
+        .gcs-contact-faq-mini-title {
+            color: #003D7A !important;
+            font-size: 1.125rem !important;
+            line-height: 1.75rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 1rem !important;
         }
 
-        .gcs-contact-faq-item {
-            background-color: #ffffff !important;
+        .gcs-contact-faq-mini-item {
             border: 1px solid #e5e7eb !important;
-            border-radius: 0.5rem !important;
+            border-radius: 0.375rem !important;
+            margin-bottom: 0.75rem !important;
             overflow: hidden !important;
-            transition: all 0.15s !important;
         }
 
-        .gcs-contact-faq-item:hover {
-            border-color: #0066CC !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-        }
-
-        .gcs-contact-faq-question {
+        .gcs-contact-faq-mini-question {
             width: 100% !important;
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            padding: 1.25rem !important;
-            background-color: transparent !important;
+            padding: 0.75rem 1rem !important;
+            background-color: #F5F7FA !important;
             border: none !important;
             cursor: pointer !important;
             text-align: left !important;
-            font-size: 1rem !important;
-            line-height: 1.5rem !important;
-            font-weight: 600 !important;
+            font-size: 0.875rem !important;
+            line-height: 1.25rem !important;
+            font-weight: 500 !important;
             color: #003D7A !important;
-            transition: color 0.15s !important;
         }
 
-        .gcs-contact-faq-question:hover {
-            color: #0066CC !important;
+        .gcs-contact-faq-mini-question:hover {
+            background-color: #e5e7eb !important;
         }
 
-        .gcs-contact-faq-question span {
+        .gcs-contact-faq-mini-question span {
             flex: 1 !important;
-            padding-right: 1rem !important;
         }
 
-        .gcs-contact-faq-icon {
-            width: 1.25rem !important;
-            height: 1.25rem !important;
+        .gcs-contact-faq-mini-icon {
+            width: 1rem !important;
+            height: 1rem !important;
             color: #0066CC !important;
             stroke: currentColor !important;
             fill: none !important;
             transition: transform 0.15s !important;
             flex-shrink: 0 !important;
+            margin-left: 0.5rem !important;
         }
 
-        .gcs-contact-faq-item.active .gcs-contact-faq-icon {
+        .gcs-contact-faq-mini-item.active .gcs-contact-faq-mini-icon {
             transform: rotate(180deg) !important;
         }
 
-        .gcs-contact-faq-answer {
+        .gcs-contact-faq-mini-answer {
             max-height: 0 !important;
             overflow: hidden !important;
             transition: max-height 0.3s ease-out !important;
         }
 
-        .gcs-contact-faq-item.active .gcs-contact-faq-answer {
-            max-height: 500px !important;
+        .gcs-contact-faq-mini-item.active .gcs-contact-faq-mini-answer {
+            max-height: 200px !important;
         }
 
-        .gcs-contact-faq-answer p {
-            padding: 0 1.25rem 1.25rem 1.25rem !important;
+        .gcs-contact-faq-mini-answer p {
+            padding: 0.75rem 1rem !important;
             color: #4b5563 !important;
             font-size: 0.875rem !important;
             line-height: 1.5rem !important;
             margin: 0 !important;
+            background-color: #ffffff !important;
         }
 
         /* ==================== CONTACT PERSONS SECTION ==================== */
@@ -1273,20 +1201,13 @@ function gcs_contact_page_shortcode() {
                 });
             });
 
-            // FAQ Accordion Handler
-            const faqItems = document.querySelectorAll('.gcs-contact-faq-item');
+            // FAQ Mini Accordion Handler
+            const faqMiniItems = document.querySelectorAll('.gcs-contact-faq-mini-item');
 
-            faqItems.forEach(item => {
-                const question = item.querySelector('.gcs-contact-faq-question');
+            faqMiniItems.forEach(item => {
+                const question = item.querySelector('.gcs-contact-faq-mini-question');
 
                 question.addEventListener('click', function() {
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-
                     // Toggle current item
                     item.classList.toggle('active');
                 });
