@@ -506,31 +506,81 @@ function gcs_contact_form_shortcode() {
 
         /* ==================== SUBMIT BUTTON ==================== */
         /* w-full bg-[#0066CC] hover:bg-[#0052A3] text-white size="lg" */
-        .gcs-cf-submit {
+        .gcs-cf-submit,
+        button.gcs-cf-submit,
+        .gcs-cf-wrapper .gcs-cf-submit,
+        .gcs-cf-wrapper button.gcs-cf-submit {
             width: 100% !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             gap: 0.5rem !important;
             height: 2.5rem !important; /* h-10 size="lg" */
+            min-height: 2.5rem !important;
             padding-left: 1.5rem !important;
             padding-right: 1.5rem !important;
             padding-top: 0.5rem !important;
             padding-bottom: 0.5rem !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
+            line-height: 1.25rem !important;
+            /* AGGRESSIVE BLUE BACKGROUND */
             color: #ffffff !important;
             background-color: #0066CC !important;
+            background-image: none !important;
+            background: #0066CC !important;
             border: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
             border-radius: 0.5rem !important; /* rounded-lg */
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
             cursor: pointer !important;
+            text-decoration: none !important;
             transition-property: all !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
         }
 
-        .gcs-cf-submit:hover {
+        .gcs-cf-submit:hover,
+        button.gcs-cf-submit:hover,
+        .gcs-cf-wrapper .gcs-cf-submit:hover,
+        .gcs-cf-wrapper button.gcs-cf-submit:hover {
             background-color: #0052A3 !important;
+            background-image: none !important;
+            background: #0052A3 !important;
+            color: #ffffff !important;
+            border: none !important;
+            outline: none !important;
+            text-decoration: none !important;
+        }
+
+        .gcs-cf-submit:active,
+        .gcs-cf-submit:focus,
+        .gcs-cf-submit:visited,
+        button.gcs-cf-submit:active,
+        button.gcs-cf-submit:focus,
+        button.gcs-cf-submit:visited,
+        .gcs-cf-wrapper .gcs-cf-submit:active,
+        .gcs-cf-wrapper .gcs-cf-submit:focus,
+        .gcs-cf-wrapper .gcs-cf-submit:visited,
+        .gcs-cf-wrapper button.gcs-cf-submit:active,
+        .gcs-cf-wrapper button.gcs-cf-submit:focus,
+        .gcs-cf-wrapper button.gcs-cf-submit:visited {
+            background-color: #0066CC !important;
+            background-image: none !important;
+            background: #0066CC !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-width: 0 !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            text-decoration: none !important;
         }
 
         /* mr-2 w-5 h-5 */
