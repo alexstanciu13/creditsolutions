@@ -987,7 +987,7 @@ function gcs_cookies_page_shortcode() {
 
             // Close on resize
             window.addEventListener('resize', function() {
-                if (window.innerWidth >= 768px) {
+                if (window.innerWidth >= 768) {
                     mobileToggle.classList.remove('active');
                     mobileMenu.classList.remove('open');
                 }
