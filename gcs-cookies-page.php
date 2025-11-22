@@ -580,6 +580,7 @@ function gcs_cookies_page_shortcode() {
             display: block !important;
         }
 
+        /* White logo - visible by default, hidden when scrolled */
         .gcs-cookies-logo-white {
             opacity: 1 !important;
             position: relative !important;
@@ -589,6 +590,7 @@ function gcs_cookies_page_shortcode() {
             opacity: 0 !important;
         }
 
+        /* Blue logo - hidden by default, visible when scrolled */
         .gcs-cookies-logo-blue {
             opacity: 0 !important;
             position: absolute !important;
