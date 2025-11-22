@@ -573,9 +573,16 @@ function gcs_footer_shortcode() {
         }
 
         /* bg-white/10 border-white/20 text-white placeholder:text-gray-400 */
-        .gcs-footer-newsletter-input {
+        .gcs-footer-newsletter-input,
+        input.gcs-footer-newsletter-input,
+        .gcs-footer-wrapper .gcs-footer-newsletter-input,
+        .gcs-footer-wrapper input.gcs-footer-newsletter-input {
             width: 100% !important;
             padding: 0.5rem 0.75rem !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
             font-size: 0.875rem !important;
             line-height: 1.25rem !important;
             color: #ffffff !important; /* text-white */
@@ -583,42 +590,113 @@ function gcs_footer_shortcode() {
             background-image: none !important;
             background: rgba(255, 255, 255, 0.1) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important; /* border-white/20 */
+            border-width: 1px !important;
+            border-style: solid !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
             border-radius: 0.375rem !important;
             outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            box-shadow: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
         }
 
-        .gcs-footer-newsletter-input::placeholder {
+        .gcs-footer-newsletter-input::placeholder,
+        input.gcs-footer-newsletter-input::placeholder,
+        .gcs-footer-wrapper .gcs-footer-newsletter-input::placeholder,
+        .gcs-footer-wrapper input.gcs-footer-newsletter-input::placeholder {
             color: #9ca3af !important; /* placeholder:text-gray-400 */
+            opacity: 1 !important;
         }
 
-        .gcs-footer-newsletter-input:focus {
+        .gcs-footer-newsletter-input:focus,
+        input.gcs-footer-newsletter-input:focus,
+        .gcs-footer-wrapper .gcs-footer-newsletter-input:focus,
+        .gcs-footer-wrapper input.gcs-footer-newsletter-input:focus {
             outline: 2px solid transparent !important;
             outline-offset: 2px !important;
+            outline-width: 0 !important;
             border-color: rgba(255, 255, 255, 0.4) !important;
+            border-width: 1px !important;
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            background-image: none !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: none !important;
         }
 
         /* w-full bg-[#0066CC] hover:bg-[#0052A3] text-white */
-        .gcs-footer-newsletter-button {
+        .gcs-footer-newsletter-button,
+        button.gcs-footer-newsletter-button,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button {
             width: 100% !important;
             padding: 0.5rem 1rem !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
             font-size: 0.875rem !important;
             font-weight: 500 !important;
+            line-height: 1.25rem !important;
+            /* AGGRESSIVE BLUE BACKGROUND */
             color: #ffffff !important; /* text-white */
             background-color: #0066CC !important; /* bg-[#0066CC] */
             background-image: none !important;
             background: #0066CC !important;
             border: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
             border-radius: 0.375rem !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
             cursor: pointer !important;
+            text-decoration: none !important;
             transition-property: background-color !important;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
             transition-duration: 150ms !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
         }
 
-        .gcs-footer-newsletter-button:hover {
+        .gcs-footer-newsletter-button:hover,
+        button.gcs-footer-newsletter-button:hover,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button:hover,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button:hover {
             background-color: #0052A3 !important; /* hover:bg-[#0052A3] */
             background-image: none !important;
             background: #0052A3 !important;
+            color: #ffffff !important;
+            border: none !important;
+            outline: none !important;
+            text-decoration: none !important;
+        }
+
+        .gcs-footer-newsletter-button:active,
+        .gcs-footer-newsletter-button:focus,
+        .gcs-footer-newsletter-button:visited,
+        button.gcs-footer-newsletter-button:active,
+        button.gcs-footer-newsletter-button:focus,
+        button.gcs-footer-newsletter-button:visited,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button:active,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button:focus,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button:visited,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button:active,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button:focus,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button:visited {
+            background-color: #0066CC !important;
+            background-image: none !important;
+            background: #0066CC !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-width: 0 !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            text-decoration: none !important;
         }
 
         .gcs-footer-newsletter-success {
