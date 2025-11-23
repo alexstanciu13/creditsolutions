@@ -681,36 +681,32 @@ function gcs_homepage_contact_form_handler() {
 
     // Prepare email
     $to = 'contact@creditsolutions.ro';
-    $domain = parse_url(home_url(), PHP_URL_HOST);
-    $from_email = 'wordpress@' . $domain;
+    $from_name = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 
     // Subject line with clear identifier
-    $email_subject = '[Contact Form] ' . $creditType . ' - ' . $name;
+    $email_subject = '[' . $creditType . '] de la ' . $name;
 
-    // Email body with clear formatting
-    $email_body = "Formular de contact - Global Credit Solutions\n";
-    $email_body .= "==========================================\n\n";
-    $email_body .= "Nume complet: $name\n";
-    $email_body .= "CNP/CUI: $cnp\n";
-    $email_body .= "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat') . "\n";
-    $email_body .= "Tip Credit: $creditType\n";
-    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
-    $email_body .= "Mesaj:\n";
-    $email_body .= "==========================================\n";
-    $email_body .= $message . "\n";
-    $email_body .= "==========================================\n\n";
-    $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
+    // Email body - simple format
+    $lines = [];
+    $lines[] = "Nume: {$name}";
+    $lines[] = "CNP/CUI: {$cnp}";
+    $lines[] = "Email: " . (!empty($email) ? $email : 'Nu a fost furnizat');
+    $lines[] = "Tip Credit: {$creditType}";
+    $lines[] = "Data: " . date('d.m.Y H:i:s');
+    $lines[] = "";
+    $lines[] = "Mesaj:";
+    $lines[] = $message;
+    $email_body = implode("\n", $lines);
 
-    // Simple but professional headers
+    // Minimal headers (like Auto Empire - goes to inbox)
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
-        'From: Global Credit Solutions <' . $from_email . '>',
-        'Return-Path: ' . $from_email,
+        'From: ' . $from_name . ' <contact@creditsolutions.ro>',
     );
 
     // Add Reply-To with customer email if provided
     if (!empty($email)) {
-        $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
+        $headers[] = 'Reply-To: ' . ($name ? "{$name} <{$email}>" : $email);
     }
 
     // Send email

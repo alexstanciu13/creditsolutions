@@ -904,8 +904,7 @@ function gcs_newsletter_subscribe_handler() {
 
     // Prepare email
     $to = 'contact@creditsolutions.ro';
-    $domain = parse_url(home_url(), PHP_URL_HOST);
-    $from_email = 'wordpress@' . $domain;
+    $from_name = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 
     $subject = 'Abonare Newsletter - ' . $email;
 
@@ -915,12 +914,11 @@ function gcs_newsletter_subscribe_handler() {
     $email_body .= "---\n";
     $email_body .= "Trimis de pe " . home_url();
 
-    // Simple but professional headers
+    // Minimal headers (like Auto Empire - goes to inbox)
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
-        'From: Global Credit Solutions <' . $from_email . '>',
+        'From: ' . $from_name . ' <contact@creditsolutions.ro>',
         'Reply-To: ' . $email,
-        'Return-Path: ' . $from_email,
     );
 
     // Send email
