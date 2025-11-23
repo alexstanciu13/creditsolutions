@@ -1,15 +1,19 @@
 <?php
 /**
- * Global Credit Solutions - WhatsApp Floating Button
+ * =========================================================================
+ * WHATSAPP FLOATING BUTTON - ALL-IN-ONE CODE SNIPPET
+ * =========================================================================
  *
- * Shortcode: [gcs_whatsapp_button]
+ * INSTALLATION:
+ * Copy this ENTIRE file content and paste it at the end of your theme's
+ * functions.php file. That's it! The WhatsApp button will appear on all pages.
  *
- * Floating WhatsApp button that appears on all pages
- * - Fixed position bottom-right
- * - Complete theme isolation with !important
- * - Mobile responsive
- * - Opens WhatsApp chat with Mihaela
+ * Location: Appearance > Theme File Editor > functions.php
+ *
+ * =========================================================================
  */
+
+// ===================== WHATSAPP BUTTON SHORTCODE =========================
 
 function gcs_whatsapp_button_shortcode() {
     // Mihaela's WhatsApp number (Romanian format: +40743212055)
@@ -183,8 +187,8 @@ function gcs_whatsapp_button_shortcode() {
             }
 
             .gcs-whatsapp-icon {
-                width: 1.75rem !important; /* 28px */
-                height: 1.75rem !important; /* 28px */
+                width: 1.5rem !important; /* 24px */
+                height: 1.5rem !important; /* 24px */
             }
 
             /* Hide tooltip on mobile */
@@ -204,4 +208,21 @@ function gcs_whatsapp_button_shortcode() {
     return ob_get_clean();
 }
 
+// Register the shortcode
 add_shortcode('gcs_whatsapp_button', 'gcs_whatsapp_button_shortcode');
+
+// ===================== AUTO-INJECT ON ALL PAGES ==========================
+
+// Auto-inject WhatsApp button in footer on all pages
+add_action('wp_footer', 'gcs_auto_inject_whatsapp_button', 100);
+
+function gcs_auto_inject_whatsapp_button() {
+    // Only show on frontend, not in admin
+    if (!is_admin()) {
+        echo do_shortcode('[gcs_whatsapp_button]');
+    }
+}
+
+// =========================================================================
+// END OF WHATSAPP BUTTON CODE
+// =========================================================================
