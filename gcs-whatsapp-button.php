@@ -95,7 +95,11 @@ function gcs_whatsapp_button_shortcode() {
 
         /* ==================== WHATSAPP BUTTON ==================== */
         /* Exact Figma design: fixed bottom-6 right-6 w-14 h-14 */
-        .gcs-whatsapp-button {
+        /* Multiple selectors to ensure theme doesn't override */
+        .gcs-whatsapp-button,
+        a.gcs-whatsapp-button,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button {
             position: fixed !important;
             bottom: 1.5rem !important; /* 24px (bottom-6 in Tailwind) */
             right: 1.5rem !important; /* 24px (right-6 in Tailwind) */
@@ -105,8 +109,15 @@ function gcs_whatsapp_button_shortcode() {
             justify-content: center !important;
             width: 3.5rem !important; /* 56px (w-14 in Tailwind) */
             height: 3.5rem !important; /* 56px (h-14 in Tailwind) */
-            background-color: #25D366 !important; /* WhatsApp green from Figma */
+            /* AGGRESSIVE WHATSAPP GREEN BACKGROUND */
+            background-color: #25D366 !important;
             background-image: none !important;
+            background-position: 0 0 !important;
+            background-size: auto !important;
+            background-repeat: no-repeat !important;
+            background-attachment: scroll !important;
+            background-origin: padding-box !important;
+            background-clip: border-box !important;
             background: #25D366 !important;
             border-radius: 50% !important; /* rounded-full */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* shadow-lg */
@@ -116,10 +127,35 @@ function gcs_whatsapp_button_shortcode() {
             transition-duration: 150ms !important;
             text-decoration: none !important;
             border: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            outline-color: transparent !important;
+        }
+
+        .gcs-whatsapp-button:link,
+        .gcs-whatsapp-button:visited,
+        a.gcs-whatsapp-button:link,
+        a.gcs-whatsapp-button:visited,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button:link,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button:visited,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button:link,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button:visited {
+            background-color: #25D366 !important;
+            background-image: none !important;
+            background: #25D366 !important;
+            text-decoration: none !important;
+            border: none !important;
             outline: none !important;
         }
 
-        .gcs-whatsapp-button:hover {
+        .gcs-whatsapp-button:hover,
+        a.gcs-whatsapp-button:hover,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button:hover,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button:hover {
             background-color: #20BA5A !important; /* Hover color from Figma */
             background-image: none !important;
             background: #20BA5A !important;
@@ -129,8 +165,29 @@ function gcs_whatsapp_button_shortcode() {
             outline: none !important;
         }
 
-        .gcs-whatsapp-button:active {
+        .gcs-whatsapp-button:active,
+        a.gcs-whatsapp-button:active,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button:active,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button:active {
+            background-color: #25D366 !important;
+            background-image: none !important;
+            background: #25D366 !important;
             transform: scale(1.05) !important;
+            text-decoration: none !important;
+            border: none !important;
+            outline: none !important;
+        }
+
+        .gcs-whatsapp-button:focus,
+        a.gcs-whatsapp-button:focus,
+        .gcs-whatsapp-wrapper .gcs-whatsapp-button:focus,
+        .gcs-whatsapp-wrapper a.gcs-whatsapp-button:focus {
+            background-color: #25D366 !important;
+            background-image: none !important;
+            background: #25D366 !important;
+            text-decoration: none !important;
+            border: none !important;
+            outline: none !important;
         }
 
         /* MessageCircle Icon - w-7 h-7 from Figma */
