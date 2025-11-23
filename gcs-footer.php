@@ -907,27 +907,20 @@ function gcs_newsletter_subscribe_handler() {
     $domain = parse_url(home_url(), PHP_URL_HOST);
     $from_email = 'wordpress@' . $domain;
 
-    $subject = '[Newsletter] Abonare nouă - ' . $email;
+    $subject = 'Abonare Newsletter - ' . $email;
 
-    $email_body = "Abonare Newsletter - Global Credit Solutions\n";
-    $email_body .= "==========================================\n\n";
+    $email_body = "Abonare nouă la newsletter:\n\n";
     $email_body .= "Email: {$email}\n";
-    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n";
-    $email_body .= "IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
-    $email_body .= "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n\n";
     $email_body .= "---\n";
-    $email_body .= "Trimis de pe: " . home_url() . "\n";
+    $email_body .= "Trimis de pe " . home_url();
 
-    // Professional email headers (same as contact forms)
+    // Simple but professional headers
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
         'From: Global Credit Solutions <' . $from_email . '>',
         'Reply-To: ' . $email,
         'Return-Path: ' . $from_email,
-        'X-Mailer: PHP/' . phpversion(),
-        'X-Priority: 3',
-        'Message-ID: <' . time() . '-' . md5($email) . '@' . $domain . '>',
-        'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
     );
 
     // Send email

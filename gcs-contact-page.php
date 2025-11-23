@@ -1258,15 +1258,11 @@ function gcs_contact_form_handler() {
     $email_body .= "==========================================\n\n";
     $email_body .= "Acest mesaj a fost trimis prin formularul de contact de pe www.creditsolutions.ro\n";
 
-    // Improved headers to avoid spam filters
+    // Simple but professional headers
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
         'From: Global Credit Solutions <' . $from_email . '>',
         'Return-Path: ' . $from_email,
-        'X-Mailer: PHP/' . phpversion(),
-        'X-Priority: 3',
-        'Message-ID: <' . time() . '-' . md5($name . $email) . '@' . $domain . '>',
-        'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
     );
 
     // Add Reply-To with customer email if provided
