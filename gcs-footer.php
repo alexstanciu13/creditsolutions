@@ -11,27 +11,6 @@
  */
 
 function gcs_footer_shortcode() {
-    $success_message = '';
-
-    // Handle newsletter submission
-    if (isset($_POST['gcs_newsletter_submit']) && isset($_POST['gcs_newsletter_nonce'])) {
-        if (wp_verify_nonce($_POST['gcs_newsletter_nonce'], 'gcs_newsletter_form')) {
-            $email = sanitize_email($_POST['gcs_newsletter_email']);
-
-            if (!empty($email) && is_email($email)) {
-                // Send email notification
-                $to = 'contact@creditsolutions.ro';
-                $subject = 'Abonare Newsletter - ' . $email;
-                $message = "Abonare nouă la newsletter:\n\nEmail: {$email}\n\n---\nTrimis de pe " . home_url();
-                $headers = array('Content-Type: text/plain; charset=UTF-8');
-
-                if (wp_mail($to, $subject, $message, $headers)) {
-                    $success_message = 'Te-ai abonat cu succes!';
-                }
-            }
-        }
-    }
-
     ob_start();
     ?>
 
@@ -178,26 +157,22 @@ function gcs_footer_shortcode() {
                         <div class="gcs-footer-newsletter">
                             <p class="gcs-footer-newsletter-text">Abonează-te la newsletter:</p>
 
-                            <?php if ($success_message): ?>
-                                <div class="gcs-footer-newsletter-success"><?php echo esc_html($success_message); ?></div>
-                            <?php endif; ?>
-
-                            <form method="post" class="gcs-footer-newsletter-form">
-                                <?php wp_nonce_field('gcs_newsletter_form', 'gcs_newsletter_nonce'); ?>
+                            <form id="gcs-footer-newsletter-form" class="gcs-footer-newsletter-form">
                                 <input
                                     type="email"
-                                    name="gcs_newsletter_email"
+                                    name="email"
                                     placeholder="Email-ul tău"
                                     required
                                     class="gcs-footer-newsletter-input"
                                 />
                                 <button
                                     type="submit"
-                                    name="gcs_newsletter_submit"
                                     class="gcs-footer-newsletter-button"
                                 >
-                                    Abonează-te
+                                    <span class="gcs-footer-btn-text">Abonează-te</span>
+                                    <span class="gcs-footer-btn-loading">Se trimite...</span>
                                 </button>
+                                <div class="gcs-footer-form-message"></div>
                             </form>
                         </div>
                     </div>
@@ -705,13 +680,57 @@ function gcs_footer_shortcode() {
             text-decoration: none !important;
         }
 
-        .gcs-footer-newsletter-success {
-            padding: 0.5rem !important;
-            background-color: #d1fae5 !important;
-            color: #065f46 !important;
+        /* Loading states */
+        .gcs-footer-btn-text {
+            display: inline !important;
+        }
+
+        .gcs-footer-btn-loading {
+            display: none !important;
+        }
+
+        .gcs-footer-newsletter-button.loading .gcs-footer-btn-text {
+            display: none !important;
+        }
+
+        .gcs-footer-newsletter-button.loading .gcs-footer-btn-loading {
+            display: inline !important;
+        }
+
+        .gcs-footer-newsletter-button:disabled,
+        button.gcs-footer-newsletter-button:disabled,
+        .gcs-footer-wrapper .gcs-footer-newsletter-button:disabled,
+        .gcs-footer-wrapper button.gcs-footer-newsletter-button:disabled {
+            opacity: 0.6 !important;
+            cursor: not-allowed !important;
+            background-color: #0066CC !important;
+            background-image: none !important;
+            background: #0066CC !important;
+        }
+
+        /* Form messages */
+        .gcs-footer-form-message {
+            display: none !important;
+            padding: 0.75rem !important;
             border-radius: 0.375rem !important;
             font-size: 0.875rem !important;
-            margin-bottom: 0.5rem !important;
+            line-height: 1.25rem !important;
+            margin-top: 0.5rem !important;
+            text-align: center !important;
+        }
+
+        .gcs-footer-form-message.success {
+            display: block !important;
+            background-color: #dcfce7 !important;
+            color: #166534 !important;
+            border: 1px solid #86efac !important;
+        }
+
+        .gcs-footer-form-message.error {
+            display: block !important;
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+            border: 1px solid #fca5a5 !important;
         }
 
         /* ==================== BOTTOM FOOTER ==================== */
@@ -783,8 +802,143 @@ function gcs_footer_shortcode() {
         }
     </style>
 
+    <script>
+        (function() {
+            const form = document.getElementById('gcs-footer-newsletter-form');
+            if (!form) return;
+
+            const submitBtn = form.querySelector('.gcs-footer-newsletter-button');
+            const messageDiv = form.querySelector('.gcs-footer-form-message');
+            const emailInput = form.querySelector('input[name="email"]');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Clear previous messages
+                messageDiv.classList.remove('success', 'error');
+                messageDiv.style.display = 'none';
+                messageDiv.textContent = '';
+
+                // Get email value
+                const email = emailInput.value.trim();
+
+                // Basic validation
+                if (!email) {
+                    messageDiv.classList.add('error');
+                    messageDiv.textContent = 'Te rugăm să introduci adresa de email.';
+                    messageDiv.style.display = 'block';
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+
+                // Submit via AJAX
+                fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        action: 'gcs_newsletter_subscribe',
+                        email: email
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    // Remove loading state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+
+                    if (result.success) {
+                        messageDiv.classList.add('success');
+                        messageDiv.textContent = result.data.message;
+                        form.reset();
+                    } else {
+                        messageDiv.classList.add('error');
+                        messageDiv.textContent = result.data.message;
+                    }
+
+                    messageDiv.style.display = 'block';
+
+                    // Smooth scroll to message
+                    messageDiv.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                })
+                .catch(error => {
+                    // Remove loading state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+
+                    messageDiv.classList.add('error');
+                    messageDiv.textContent = 'A apărut o eroare. Te rugăm să încerci din nou.';
+                    messageDiv.style.display = 'block';
+                });
+            });
+        })();
+    </script>
+
     <?php
     return ob_get_clean();
 }
 
 add_shortcode('gcs_footer', 'gcs_footer_shortcode');
+
+// AJAX handler for newsletter subscription
+function gcs_newsletter_subscribe_handler() {
+    // Validate email
+    $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+
+    if (empty($email)) {
+        wp_send_json_error(['message' => 'Adresa de email este obligatorie.']);
+        return;
+    }
+
+    if (!is_email($email)) {
+        wp_send_json_error(['message' => 'Adresa de email nu este validă.']);
+        return;
+    }
+
+    // Prepare email
+    $to = 'contact@creditsolutions.ro';
+    $domain = parse_url(home_url(), PHP_URL_HOST);
+    $from_email = 'wordpress@' . $domain;
+
+    $subject = '[Newsletter] Abonare nouă - ' . $email;
+
+    $email_body = "Abonare Newsletter - Global Credit Solutions\n";
+    $email_body .= "==========================================\n\n";
+    $email_body .= "Email: {$email}\n";
+    $email_body .= "Data: " . date('d.m.Y H:i:s') . "\n";
+    $email_body .= "IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
+    $email_body .= "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+    $email_body .= "---\n";
+    $email_body .= "Trimis de pe: " . home_url() . "\n";
+
+    // Professional email headers (same as contact forms)
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: Global Credit Solutions <' . $from_email . '>',
+        'Reply-To: ' . $email,
+        'Return-Path: ' . $from_email,
+        'X-Mailer: PHP/' . phpversion(),
+        'X-Priority: 3',
+        'Message-ID: <' . time() . '-' . md5($email) . '@' . $domain . '>',
+        'List-Unsubscribe: <mailto:contact@creditsolutions.ro>',
+    );
+
+    // Send email
+    $sent = wp_mail($to, $subject, $email_body, $headers);
+
+    if ($sent) {
+        wp_send_json_success(['message' => 'Te-ai abonat cu succes la newsletter!']);
+    } else {
+        wp_send_json_error(['message' => 'A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou.']);
+    }
+}
+
+add_action('wp_ajax_gcs_newsletter_subscribe', 'gcs_newsletter_subscribe_handler');
+add_action('wp_ajax_nopriv_gcs_newsletter_subscribe', 'gcs_newsletter_subscribe_handler');
